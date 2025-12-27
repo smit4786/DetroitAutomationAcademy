@@ -1,3 +1,4 @@
+"""
 # DetroitAutomationAcademy
 
 The Opportunity
@@ -32,3 +33,4 @@ the standard toolset for modern robotics.
 complete FAA Part 107 (Drone Pilot) prep work.
 3. Career Pathways: Direct mentorship from industry practitioners and exposure to the Newlab
 ecosystem, demystifying careers in advanced manufacturing and mobility.
+"""
