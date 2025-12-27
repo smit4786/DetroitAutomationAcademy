@@ -1,6 +1,7 @@
 # DetroitAutomationAcademy
 
-The Opportunity
+The Opportunity:
+
 Detroit is the global epicenter of mobility innovation, yet a significant disconnect remains
 between the advanced technologies being developed at Michigan Central and the educational
 opportunities available to Detroit’s youth. While software jobs are booming, few programs exist
