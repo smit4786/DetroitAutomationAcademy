@@ -76,6 +76,7 @@ DetroitAutomationAcademy/
 │   ├── quick_start.md         # Getting started guide
 │   ├── api_reference.md       # API documentation
 │   ├── phase1_guide.md        # Phase 1 detailed guide
+│   ├── phase2_guide.md        # Phase 2 detailed guide
 │   └── phase3_guide.md        # Phase 3 detailed guide
 └── test_examples.py           # Unit tests
 ```
@@ -85,6 +86,7 @@ DetroitAutomationAcademy/
 - **[Quick Start Guide](docs/quick_start.md)** - Get up and running quickly
 - **[API Reference](docs/api_reference.md)** - Detailed API documentation
 - **[Phase 1 Guide](docs/phase1_guide.md)** - Python fundamentals & microcontrollers
+- **[Phase 2 Guide](docs/phase2_guide.md)** - CAD design & rapid prototyping
 - **[Phase 3 Guide](docs/phase3_guide.md)** - Autonomous systems & sensor fusion
 
 ## Examples
