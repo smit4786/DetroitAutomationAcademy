@@ -1,0 +1,24 @@
+# requirements.txt
+# Python packages for Detroit Automation Academy
+
+# Raspberry Pi GPIO control
+RPi.GPIO
+
+# For data analysis and visualization (useful for sensor data)
+numpy
+matplotlib
+pandas
+
+# For computer vision (useful for autonomous systems)
+opencv-python
+
+# For drone control (future phases)
+dronekit
+
+# For CAD design (Phase 2 - might need additional tools)
+# Note: CAD design typically uses software like FreeCAD, but Python bindings exist
+
+# For general development
+pytest  # For testing
+black   # For code formatting
+flake8  # For linting

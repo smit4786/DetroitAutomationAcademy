@@ -15,6 +15,8 @@ workforce development fellowship hosted at the Youth STEM Lab. Unlike traditiona
 our curriculum is rooted in industrial application. We teach high school students (Grades 9-12)
 how to write Python code that controls the physical world—from autonomous rovers to aerial
 drones.
+We empower students to apply their Python skills beyond the screen, directly controlling and building robotic systems.
+<p>Learn more about our hands-on approach.</p>
 By leveraging Michigan Central’s state-of-the-art makerspace, we transform abstract concepts
 into tangible skills. Students don't just learn syntax; they 3D print rover chassis, laser-cut sensor
 mounts, and write the algorithms that allow these machines to navigate the world autonomously.
