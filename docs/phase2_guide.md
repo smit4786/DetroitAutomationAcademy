@@ -47,6 +47,39 @@ Parametric design means creating models where dimensions and features are define
 
 ## 3D Printing Basics
 
+### 3D Printing Technologies Overview
+
+There are two main 3D printing technologies used in education and prototyping: **FDM (Fused Deposition Modeling)** and **SLA (Stereolithography)**. Each has distinct advantages and use cases.
+
+#### FDM vs SLA Comparison
+
+| Feature | FDM | SLA |
+|---------|-----|-----|
+| **Process** | Extrudes melted thermoplastic filament | Uses UV laser to cure liquid resin |
+| **Materials** | PLA, ABS, PETG, Nylon, Composites | Photosensitive resins |
+| **Build Size** | Large (up to 300mm+) | Smaller (up to 200mm) |
+| **Resolution** | 100-300 microns | 25-100 microns |
+| **Surface Finish** | Layer lines visible | Smooth, injection-molded quality |
+| **Strength** | High mechanical strength | Brittle, engineering resins available |
+| **Cost** | Low material/printer cost | Higher material cost |
+| **Speed** | Faster for large parts | Slower, more precise |
+| **Post-processing** | Minimal | UV curing, support removal, washing |
+| **Best for** | Functional parts, prototyping, education | Detailed models, jewelry, medical devices |
+
+#### When to Choose FDM
+- **Education and prototyping** (most common for beginners)
+- **Functional mechanical parts** requiring strength
+- **Large objects** that need to be lightweight
+- **Cost-effective production** of multiple parts
+- **Composite materials** for enhanced properties
+
+#### When to Choose SLA
+- **High-detail prototypes** with smooth surfaces
+- **Presentation models** and concept verification
+- **Small precision parts** (jewelry, dental, medical)
+- **Complex geometries** with fine features
+- **Transparent or colored** parts
+
 ### FDM (Fused Deposition Modeling) Process
 1. **Design**: Create 3D model
 2. **Slice**: Convert to G-code with slicing software
@@ -58,18 +91,78 @@ Parametric design means creating models where dimensions and features are define
 - **Wall Thickness**: 2-4 shells for strength
 - **Supports**: Required for overhangs >45°
 
-### Common Materials
+### Common FDM Materials
 - **PLA**: Easy to print, biodegradable, good for prototyping
 - **PETG**: Durable, temperature resistant, good for functional parts
 - **ABS**: Strong, heat resistant, requires heated bed
+- **Nylon**: Flexible, wear-resistant, good for moving parts
+- **TPU**: Rubber-like, flexible for gaskets and grips
+- **Carbon Fiber**: High strength-to-weight ratio
+
+### SLA Materials (Resins)
+- **Standard Resin**: General purpose, good for detailed models
+- **Tough Resin**: Impact-resistant, engineering applications
+- **Flexible Resin**: Rubber-like, for flexible prototypes
+- **Castable Resin**: Burns out cleanly for jewelry casting
+- **Dental Resin**: Biocompatible, medical applications
+- **Clear Resin**: Transparent parts, optical applications
 
 ### Print Settings by Material
 
-| Material | Bed Temp (°C) | Nozzle Temp (°C) | Print Speed (mm/s) |
-|----------|---------------|------------------|-------------------|
-| PLA      | 50-60        | 190-220         | 50-80            |
-| PETG     | 70-80        | 220-250         | 40-60            |
-| ABS      | 90-110       | 220-250         | 40-60            |
+#### FDM Settings
+| Material | Bed Temp (°C) | Nozzle Temp (°C) | Print Speed (mm/s) | Supports Needed |
+|----------|---------------|------------------|-------------------|-----------------|
+| PLA      | 50-60        | 190-220         | 50-80            | Minimal        |
+| PETG     | 70-80        | 220-250         | 40-60            | Moderate       |
+| ABS      | 90-110       | 220-250         | 40-60            | Extensive      |
+| Nylon    | 80-100       | 240-260         | 30-50            | Moderate       |
+
+#### SLA Settings
+| Material | Layer Height | Exposure Time | Best For |
+|----------|--------------|---------------|----------|
+| Standard | 25-100μm    | 6-10s        | Prototypes, models |
+| Tough    | 50-100μm    | 8-12s        | Functional parts |
+| Flexible | 50-100μm    | 10-15s       | Gaskets, grips |
+| Clear    | 25-50μm     | 8-12s        | Optics, displays |
+
+## SLA Printing Workflow
+
+### 1. Design Phase
+```bash
+# Generate STL model (same as FDM)
+python3 phase2/cad_design.py
+```
+
+### 2. Orientation and Supports
+1. Import STL into SLA slicing software (ChiTuBox, Lychee, etc.)
+2. Orient model for optimal strength and surface finish
+3. Auto-generate supports for overhangs
+4. Ensure model fits within build volume
+
+### 3. Slicing Phase
+1. Set layer height (25-100μm depending on detail needed)
+2. Configure exposure times for base, normal, and support layers
+3. Set lift speeds and wait times between layers
+4. Generate sliced file (.ctb or .cbddlp format)
+
+### 4. Printing Phase
+1. Fill resin tank and ensure clean build platform
+2. Load sliced file into printer
+3. Start print job (may take several hours)
+4. Monitor first few layers for adhesion issues
+
+### 5. Post-Processing
+1. Remove printed part from build platform
+2. Remove supports with flush cutters or pliers
+3. Wash part in isopropyl alcohol (IPA) to remove uncured resin
+4. UV cure for final hardness (optional for some resins)
+5. Sand or polish for final finish
+
+### SLA Safety Notes
+- **Resin Handling**: Wear gloves, work in ventilated area
+- **UV Light**: Avoid direct exposure to uncured resin or curing light
+- **Cleanup**: Dispose of resin waste properly
+- **Ventilation**: SLA printers should be in well-ventilated spaces
 
 ## Laser Cutting Basics
 
@@ -246,27 +339,44 @@ python3 phase2/cad_design.py
 
 ## Troubleshooting
 
-### 3D Printing Issues
+### SLA Printing Issues
 
-1. **Poor Layer Adhesion**
-   - Check bed leveling
-   - Increase bed temperature
-   - Clean build surface
+1. **Failed Resin Adhesion**
+   - Ensure build platform is clean and properly coated
+   - Check resin level and quality
+   - Verify platform leveling
+   - Increase initial exposure time
 
-2. **Stringing/Oozing**
-   - Reduce print temperature
-   - Increase retraction settings
-   - Slow down print speed
+2. **Incomplete Curing**
+   - Increase layer exposure time
+   - Check UV light intensity
+   - Ensure proper resin-to-platform distance (typically 0.05-0.1mm)
+   - Verify resin hasn't expired
 
-3. **Warping**
-   - Use brim or raft
-   - Increase bed temperature
-   - Improve bed adhesion
+3. **Support Structure Failures**
+   - Increase support density
+   - Use thicker support bases
+   - Optimize support angles (45° or less)
+   - Check for proper support placement
 
-4. **Layer Shifting**
-   - Check belt tension
-   - Clean linear rails
-   - Reduce acceleration settings
+4. **Warping or Deformation**
+   - Increase support structures
+   - Reduce layer thickness
+   - Optimize part orientation
+   - Allow longer post-curing time
+
+5. **Surface Imperfections**
+   - Increase exposure time for bottom layers
+   - Use higher quality resin
+   - Clean build platform thoroughly
+   - Check for resin contamination
+
+### Safety Considerations for SLA
+
+- **UV Light Exposure**: Always wear UV-protective eyewear when operating SLA printers
+- **Resin Handling**: Use nitrile gloves and work in well-ventilated areas; avoid skin contact
+- **Post-Curing**: Use dedicated UV curing chambers; never look directly at UV light sources
+- **Waste Disposal**: Follow local regulations for resin waste disposal; never pour down drains
 
 ### Laser Cutting Issues
 
@@ -334,10 +444,13 @@ python3 phase2/cad_design.py
 ## Resources
 
 - [3D Printing Basics](https://www.simplify3d.com/support/print-quality-troubleshooting/)
+- [FDM vs SLA Comparison](https://www.creality.com/blog/fdm-vs-sla-the-differences-to-be-clearly-explained)
+- [SLA Printing Guide](https://formlabs.com/blog/ultimate-guide-to-stereolithography-sla-3d-printing/)
 - [G-code Reference](https://marlinfw.org/meta/gcode/)
 - [STL File Format](https://en.wikipedia.org/wiki/STL_(file_format))
 - [FreeCAD Documentation](https://wiki.freecadweb.org/)
 - [Cura Slicing Software](https://ultimaker.com/software/ultimaker-cura)
+- [PrusaSlicer](https://www.prusa3d.com/prusaslicer/)
 
 ## Safety Guidelines
 
