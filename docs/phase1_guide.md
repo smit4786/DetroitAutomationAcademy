@@ -18,9 +18,49 @@ By the end of Phase 1, students will be able to:
 - Breadboard
 - Jumper wires (male-to-male, male-to-female)
 - LEDs (various colors)
-- 220Ω resistors
+- 220Ω resistors (current-limiting for LEDs)
 - Push buttons
 - Optional: Temperature sensor (DS18B20), ultrasonic distance sensor
+
+## Current-Limiting Resistors for LEDs
+
+### Why LEDs Need Current-Limiting Resistors
+
+LEDs are current-controlled devices with non-linear I-V (current-voltage) characteristics. Unlike resistors, small changes in forward voltage can cause large changes in forward current. Without current-limiting resistors, LEDs can:
+
+1. **Draw excessive current** - Leading to immediate failure or reduced lifespan
+2. **Experience thermal runaway** - As LEDs heat up, their forward voltage decreases, causing more current to flow, which generates more heat in a dangerous feedback loop
+3. **Show inconsistent brightness** - Due to manufacturing variations in forward voltage
+
+### How to Calculate Resistor Values
+
+Use Ohm's Law: **R = (V_supply - V_forward) / I_desired**
+
+Where:
+- **V_supply** = Supply voltage (3.3V for Raspberry Pi GPIO)
+- **V_forward** = LED forward voltage (typically 2.0-3.3V for standard LEDs)
+- **I_desired** = Desired current (typically 10-20mA for standard LEDs)
+
+**Example Calculation:**
+- Raspberry Pi GPIO: 3.3V
+- Red LED V_forward: 2.1V
+- Desired current: 15mA (0.015A)
+
+R = (3.3V - 2.1V) / 0.015A = 1.2V / 0.015A = 80Ω
+
+**Common Resistor Values for Raspberry Pi:**
+- Red/Green LEDs: 220Ω (safe for most applications)
+- Blue/White LEDs: 100-150Ω (lower forward voltage)
+- High-brightness LEDs: Check datasheet for exact specifications
+
+### Circuit Protection
+
+Always include current-limiting resistors in series with LEDs:
+```
+GPIO Pin → Resistor → LED Anode (+) → LED Cathode (-) → GND
+```
+
+**Never connect LEDs directly to GPIO pins** - this can damage both the LED and the Raspberry Pi!
 
 ### GPIO Pin Layout
 ```
@@ -51,11 +91,29 @@ GND  (39)(40) GPIO21
 
 ### LED Blinking (`led_blink.py`)
 
-This example demonstrates basic GPIO output control.
+This example demonstrates basic GPIO output control and proper LED circuit design.
 
 **Circuit Setup:**
-- Connect LED anode (+) to GPIO pin 17 through a 220Ω resistor
-- Connect LED cathode (-) to GND
+```
+Raspberry Pi GPIO 17 ──► 220Ω Resistor ──► LED Anode (+) │
+                                                       │
+                                                       ▼
+                                                     LED Cathode (-) ──► GND
+```
+
+**Breadboard Layout:**
+```
+GPIO 17 ──► [220Ω] ──► LED+ │
+                              │
+                              ▼
+                            LED- ──► GND Pin
+```
+
+**Safety Notes:**
+- **Always use a current-limiting resistor** (220Ω is safe for most LEDs with Raspberry Pi)
+- **Never connect LED directly to GPIO** - this will damage the Raspberry Pi
+- **Check LED polarity** - anode (+) connects to resistor, cathode (-) to GND
+- **Verify resistor value** - too low = LED burnout, too high = dim LED
 
 **Code Explanation:**
 ```python
@@ -65,9 +123,9 @@ import time
 GPIO.setmode(GPIO.BCM)  # Use BCM pin numbering
 GPIO.setup(17, GPIO.OUT)  # Set pin 17 as output
 
-GPIO.output(17, GPIO.HIGH)  # Turn LED on
+GPIO.output(17, GPIO.HIGH)  # Turn LED on (3.3V through resistor)
 time.sleep(1)  # Wait 1 second
-GPIO.output(17, GPIO.LOW)   # Turn LED off
+GPIO.output(17, GPIO.LOW)   # Turn LED off (0V)
 
 GPIO.cleanup()  # Clean up GPIO settings
 ```
@@ -120,11 +178,23 @@ GPIO.add_event_detect(18, GPIO.FALLING, callback=button_callback)
    - Always call `GPIO.cleanup()` at the end
 
 3. **LED Not Lighting**
-   - Check circuit connections
-   - Verify correct pin numbers
-   - Check resistor value
+   - Check circuit connections (LED polarity: anode to resistor, cathode to GND)
+   - Verify correct pin numbers and GPIO mode (BCM vs BOARD)
+   - Check resistor value (220Ω is safe; too high = dim, too low = dangerous)
+   - Test LED with multimeter (should show ~2-3V forward voltage)
+   - Verify GPIO pin is set to OUTPUT mode
 
-4. **Button Not Responding**
+4. **LED Too Dim or Too Bright**
+   - Calculate proper resistor: R = (3.3V - V_forward) / I_desired
+   - Typical values: Red/Green=220Ω, Blue/White=100-150Ω
+   - Check LED datasheet for exact forward voltage and current specs
+
+5. **LED Burns Out**
+   - Missing or incorrect resistor value
+   - LED connected directly to GPIO (no resistor)
+   - Exceeded maximum current rating
+
+6. **Button Not Responding**
    - Check button wiring
    - Verify pull-up/down resistor configuration
    - Check for switch bounce (use bouncetime parameter)
@@ -133,11 +203,21 @@ GPIO.add_event_detect(18, GPIO.FALLING, callback=button_callback)
 
 - Use `GPIO.input(pin)` to read current pin state
 - Add print statements to verify code execution
-- Use multimeter to test circuit continuity
+- Use multimeter to test circuit continuity and voltages
 - Check Raspberry Pi pinout diagram carefully
+- Test components individually before combining circuits
+
+### Safety Guidelines
+
+- **Always use current-limiting resistors with LEDs**
+- **Never exceed GPIO current limits** (16mA per pin, 50mA total)
+- **Double-check polarity** before powering circuits
+- **Use breadboard for prototyping** - avoid soldering mistakes
+- **Power off Raspberry Pi** when connecting/disconnecting circuits
 
 ## Resources
 
 - [Raspberry Pi GPIO Documentation](https://www.raspberrypi.org/documentation/usage/gpio/)
 - [Python GPIO Library](https://sourceforge.net/p/raspberry-gpio-python/wiki/Home/)
+- [LED Current Limiting Resistors Guide](https://www.waveformlighting.com/pcb-designs/when-and-why-do-leds-need-current-limiting-resistors)
 - [Adafruit GPIO Tutorial](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup)
