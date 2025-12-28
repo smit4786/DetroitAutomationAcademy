@@ -187,7 +187,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## Contact
 
 For questions about the Detroit Automation Academy program, contact:
-- Email: info@detroitautomationacademy.org
+- Email: dbkrsmith@gmail.com
 
 ## Acknowledgments
 
