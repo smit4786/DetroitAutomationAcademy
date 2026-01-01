@@ -22,3 +22,5 @@ dronekit
 pytest  # For testing
 black   # For code formatting
 flake8  # For linting
+httpx   # For making HTTP requests
+pydantic # For data validation
