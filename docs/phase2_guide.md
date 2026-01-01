@@ -130,7 +130,7 @@ There are two main 3D printing technologies used in education and prototyping: *
 ### 1. Design Phase
 ```bash
 # Generate STL model (same as FDM)
-python3 phase2/cad_design.py
+python3 examples/cad_design.py
 ```
 
 ### 2. Orientation and Supports
