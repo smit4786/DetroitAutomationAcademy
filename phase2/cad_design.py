@@ -65,6 +65,34 @@ class STLWriter:
                 # Attribute byte count (2 bytes)
                 f.write(struct.pack('<H', 0))
 
+def add_cuboid(stl, x, y, z, dx, dy, dz):
+    """
+    Helper to add a cuboid (box) to an STL writer.
+    
+    Args:
+        stl (STLWriter): The STL writer instance
+        x, y, z (float): Origin coordinates (bottom-front-left)
+        dx, dy, dz (float): Dimensions in x, y, and z
+    """
+    vertices = [
+        (x, y, z),              # 0
+        (x + dx, y, z),         # 1
+        (x + dx, y + dy, z),    # 2
+        (x, y + dy, z),         # 3
+        (x, y, z + dz),         # 4
+        (x + dx, y, z + dz),    # 5
+        (x + dx, y + dy, z + dz), # 6
+        (x, y + dy, z + dz),    # 7
+    ]
+    faces = [
+        (0, 1, 2), (0, 2, 3), (4, 5, 6), (4, 6, 7), # Bottom, Top
+        (0, 1, 5), (0, 5, 4), (3, 2, 6), (3, 6, 7), # Front, Back
+        (0, 3, 7), (0, 7, 4), (1, 2, 6), (1, 6, 5), # Left, Right
+    ]
+    for face in faces:
+        v1, v2, v3 = [vertices[i] for i in face]
+        stl.add_triangle(v1, v2, v3)
+
 def create_rover_chassis(width=10, height=5, length=15):
     """
     Create a simple rover chassis model.
@@ -171,6 +199,104 @@ def create_sensor_mount(radius=2, height=3):
     stl.write()
     print(f"Created sensor mount model: {stl.filename}")
 
+def create_gear_token(diameter=40, thickness=5, teeth=6):
+    """
+    Create the 'Future Gear' token for the B&G Club event.
+    
+    Args:
+        diameter (float): Outer diameter of the gear
+        thickness (float): Thickness of the token
+        teeth (int): Number of gear teeth
+    """
+    stl = STLWriter('gear_token.stl')
+    radius = diameter / 2
+    segments = 72  # High resolution for smooth curves
+    
+    # Generate vertices for the gear profile (sine wave approximation for teeth)
+    bottom_vertices = []
+    top_vertices = []
+    
+    for i in range(segments):
+        angle = i * 2 * math.pi / segments
+        # Modulate radius to create teeth: Base radius + sine wave offset
+        # Using 0.85 factor for inner radius of teeth
+        r = radius * (0.85 + 0.15 * math.sin(teeth * angle))
+        
+        x = r * math.cos(angle)
+        y = r * math.sin(angle)
+        
+        bottom_vertices.append((x, y, 0))
+        top_vertices.append((x, y, thickness))
+
+    # Create faces
+    center_bottom = (0, 0, 0)
+    center_top = (0, 0, thickness)
+
+    for i in range(segments):
+        next_i = (i + 1) % segments
+        
+        # Bottom face (fan)
+        stl.add_triangle(center_bottom, bottom_vertices[next_i], bottom_vertices[i])
+        
+        # Top face (fan)
+        stl.add_triangle(center_top, top_vertices[i], top_vertices[next_i])
+        
+        # Side walls (2 triangles per segment)
+        stl.add_triangle(bottom_vertices[i], bottom_vertices[next_i], top_vertices[i])
+        stl.add_triangle(bottom_vertices[next_i], top_vertices[next_i], top_vertices[i])
+
+    stl.write()
+    print(f"Created gear token model: {stl.filename}")
+
+def create_skyline_keychain(filename='skyline_keychain.stl'):
+    """
+    Create the 'Detroit Skyline' Keychain (Concept 3).
+    Features a base tag with low-poly building blocks.
+    """
+    stl = STLWriter(filename)
+    
+    # Base Tag (50mm x 30mm x 2mm)
+    add_cuboid(stl, 0, 0, 0, 50, 30, 2)
+    
+    # Skyline Buildings (Low-poly relief)
+    # Building 1 (Renaissance Center style central tower)
+    add_cuboid(stl, 20, 5, 2, 10, 20, 15)
+    # Building 2 (Left tower)
+    add_cuboid(stl, 5, 5, 2, 10, 15, 8)
+    # Building 3 (Right tower)
+    add_cuboid(stl, 35, 5, 2, 10, 12, 6)
+    
+    # Keyring Loop (Approximated with 3 blocks forming a C shape)
+    add_cuboid(stl, -5, 10, 0, 5, 2, 2)   # Bottom strut
+    add_cuboid(stl, -5, 20, 0, 5, 2, 2)   # Top strut
+    add_cuboid(stl, -7, 10, 0, 2, 12, 2)  # Connector
+    
+    stl.write()
+    print(f"Created skyline keychain model: {stl.filename}")
+
+def create_robot_head(filename='robot_head.stl'):
+    """
+    Create the 'Robot Head' Token (Concept 4).
+    A simple 2D extruded icon.
+    """
+    stl = STLWriter(filename)
+    
+    # Face Base (40mm x 40mm)
+    add_cuboid(stl, 0, 0, 0, 40, 40, 3)
+    
+    # Eyes (Raised blocks)
+    add_cuboid(stl, 8, 22, 3, 8, 8, 2)
+    add_cuboid(stl, 24, 22, 3, 8, 8, 2)
+    
+    # Mouth (Wide block)
+    add_cuboid(stl, 10, 8, 3, 20, 6, 2)
+    
+    # Antenna
+    add_cuboid(stl, 18, 40, 0, 4, 6, 3)
+    
+    stl.write()
+    print(f"Created robot head model: {stl.filename}")
+
 def generate_gcode_for_laser_cutting(shape="square", size=10):
     """
     Generate G-code for laser cutting a simple shape.
@@ -228,6 +354,9 @@ if __name__ == "__main__":
     print("\nGenerating 3D models...")
     create_rover_chassis(width=12, height=6, length=18)
     create_sensor_mount(radius=3, height=4)
+    create_gear_token(diameter=40, thickness=5, teeth=6)
+    create_skyline_keychain()
+    create_robot_head()
 
     # Generate laser cutting G-code
     print("\nGenerating laser cutting files...")
@@ -239,4 +368,7 @@ if __name__ == "__main__":
     print("Files generated:")
     print("- rover_chassis.stl (3D printable rover chassis)")
     print("- sensor_mount.stl (3D printable sensor mount)")
+    print("- gear_token.stl (B&G Club Event Token)")
+    print("- skyline_keychain.stl (Concept 3)")
+    print("- robot_head.stl (Concept 4)")
     print("- laser_cut_*.gcode (laser cutting files)")

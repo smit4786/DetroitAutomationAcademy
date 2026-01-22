@@ -20,8 +20,33 @@ By the end of Phase 2, students will be able to:
 - STL file viewer (optional: FreeCAD, Meshlab)
 
 ### Hardware Requirements
-- 3D printer (FDM type recommended for beginners)
-- Laser cutter (with G-code support)
+The academy utilizes the following specific hardware for rapid prototyping:
+
+#### 3D Printers
+- **Bambu Lab X1 Carbon**
+  - **Type:** CoreXY FDM
+  - **Build Volume:** 256 x 256 x 256 mm
+  - **Features:** AI failure detection, Lidar leveling, Multi-Material System (AMS) for 4+ colors.
+  - **Best For:** Advanced engineering materials (ABS, Carbon Fiber) and high-speed prototyping.
+- **Bambu Lab A1**
+  - **Type:** Cartesian "Bed Slinger" FDM
+  - **Build Volume:** 256 x 256 x 256 mm
+  - **Features:** Active Flow Rate Compensation, AMS Lite for multi-color printing.
+  - **Best For:** PLA/PETG parts, multi-color visual models, and high-speed drafting.
+- **Prusa Research i3 MK3S+**
+  - **Type:** Cartesian FDM
+  - **Build Volume:** 250 x 210 x 210 mm
+  - **Features:** Direct drive extruder, mesh bed leveling, open-source hardware.
+  - **Best For:** Learning printer mechanics, maintenance, and reliable daily printing.
+
+#### Laser Cutters
+- **Epilog Laser Fusion Maker**
+  - **Type:** CO2 Laser Cutter/Engraver
+  - **Work Area:** 24" x 12" (610 x 305 mm)
+  - **Power:** 30W or 40W CO2 Laser
+  - **Features:** IRIS™ Camera Positioning System for precise alignment.
+  - **Materials:** Wood, Acrylic, Cardboard, Leather (Cutting & Engraving); Anodized Aluminum, Glass (Engraving only).
+
 - Computer for design and slicing
 
 ## CAD Design Fundamentals
@@ -85,6 +110,17 @@ There are two main 3D printing technologies used in education and prototyping: *
 2. **Slice**: Convert to G-code with slicing software
 3. **Print**: Extrude melted plastic layer by layer
 
+#### Printer Mechanics: CoreXY vs. Bed Slinger
+Understanding the kinematics of our printers helps in orienting parts and choosing the right machine.
+
+- **Bed Slinger (Cartesian)**: The print bed moves along the Y-axis (back and forth).
+  - **Lab Printers:** Bambu Lab A1, Prusa i3 MK3S+
+  - **Considerations:** The moving bed creates inertia. Tall, thin parts may wobble or detach if printed at high speeds.
+
+- **CoreXY**: The bed moves only in Z (vertical), while the head moves X and Y.
+  - **Lab Printers:** Bambu Lab X1 Carbon
+  - **Considerations:** The stationary bed provides high stability. This allows for significantly faster printing speeds and is safer for tall, delicate prints.
+
 ### Key Parameters
 - **Layer Height**: 0.1-0.3mm (finer = smoother but slower)
 - **Infill**: 10-30% for most functional parts
@@ -130,7 +166,7 @@ There are two main 3D printing technologies used in education and prototyping: *
 ### 1. Design Phase
 ```bash
 # Generate STL model (same as FDM)
-python3 examples/cad_design.py
+python3 phase2/cad_design.py
 ```
 
 ### 2. Orientation and Supports
