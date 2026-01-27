@@ -120,8 +120,8 @@
 
 **File:** [test_examples.py](test_examples.py)
 
-**Before:** 434 lines (13 test methods in 4 classes)  
-**After:** 829 lines (32 test methods in 8 classes)  
+**Before:** 434 lines (13 test methods in 4 classes)
+**After:** 829 lines (32 test methods in 8 classes)
 **Net Change:** +396 lines
 
 **New Test Classes Added:**

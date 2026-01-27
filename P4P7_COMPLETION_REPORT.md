@@ -186,7 +186,7 @@ All 9 required documentation files present and verified ✅
 class MockGPIO:
     HIGH = 1
     LOW = 0
-    
+
     def setup(pin, mode)      # Pin configuration
     def output(pin, state)    # Set pin state
 

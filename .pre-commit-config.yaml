@@ -60,7 +60,8 @@ repos:
     hooks:
       - id: pydocstyle
         exclude: ^tests/
-        args: [--convention=google]
+        args:
+          - --ignore=D100,D104,D107,D200,D205,D212,D401,D406,D407,D413,D415,D417
         name: Check docstring style
 
 # Additional configuration

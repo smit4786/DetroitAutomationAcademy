@@ -25,7 +25,7 @@
 ### 1. Multi-Version Testing Strategy
 **Before:** Tests ran only on Python 3.9
 
-**After:** 
+**After:**
 - Python 3.8 (legacy support)
 - Python 3.9 (baseline)
 - Python 3.10 (current stable)
@@ -218,7 +218,7 @@ radon mi phase1/ phase2/ phase3/
 **Net Change:** +107 lines
 
 **Workflow Name:** Code Quality & Testing
-**Triggers:** 
+**Triggers:**
 - Push to main/develop
 - All pull requests to main/develop
 

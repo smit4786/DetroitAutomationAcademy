@@ -10,6 +10,7 @@ It demonstrates basic pathfinding and obstacle avoidance concepts.
 import random
 import time
 
+
 class Rover:
     """
     Represents an autonomous rover with position and orientation.
@@ -35,13 +36,13 @@ class Rover:
         Move the rover one unit forward in its current direction.
         Updates the x or y coordinate based on current direction.
         """
-        if self.direction == 0:      # North
+        if self.direction == 0:  # North
             self.y += 1
-        elif self.direction == 1:    # East
+        elif self.direction == 1:  # East
             self.x += 1
-        elif self.direction == 2:    # South
+        elif self.direction == 2:  # South
             self.y -= 1
-        elif self.direction == 3:    # West
+        elif self.direction == 3:  # West
             self.x -= 1
 
     def turn_left(self):
@@ -67,6 +68,7 @@ class Rover:
         """
         return (self.x, self.y)
 
+
 class World:
     """
     Represents a 2D grid world with obstacles and boundaries.
@@ -88,7 +90,9 @@ class World:
         self.obstacles = set()
         # Add some random obstacles
         for _ in range(5):
-            self.obstacles.add((random.randint(0, width-1), random.randint(0, height-1)))
+            self.obstacles.add(
+                (random.randint(0, width - 1), random.randint(0, height - 1))
+            )
 
     def is_valid_position(self, x, y):
         """
@@ -101,7 +105,11 @@ class World:
         Returns:
             bool: True if position is valid, False otherwise
         """
-        return 0 <= x < self.width and 0 <= y < self.height and (x, y) not in self.obstacles
+        return (
+            0 <= x < self.width
+            and 0 <= y < self.height
+            and (x, y) not in self.obstacles
+        )
 
     def display(self, rover):
         """
@@ -116,16 +124,17 @@ class World:
             - '#' represents obstacles
             - '.' represents empty space
         """
-        for y in range(self.height-1, -1, -1):
+        for y in range(self.height - 1, -1, -1):
             for x in range(self.width):
                 if (x, y) == rover.get_position():
-                    print('R', end='')
+                    print("R", end="")
                 elif (x, y) in self.obstacles:
-                    print('#', end='')
+                    print("#", end="")
                 else:
-                    print('.', end='')
+                    print(".", end="")
             print()
         print()
+
 
 def simple_autonomous_navigation(rover, world, steps=20):
     """
@@ -152,6 +161,7 @@ def simple_autonomous_navigation(rover, world, steps=20):
                 rover.turn_right()
 
         time.sleep(0.5)  # Slow down for visualization
+
 
 if __name__ == "__main__":
     rover = Rover(0, 0)

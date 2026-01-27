@@ -1,6 +1,6 @@
 # Detroit Automation Academy
 
-**Status:** Active  
+**Status:** Active
 **Context:** Educational robotics and automation curriculum
 
 ## 📚 Documentation

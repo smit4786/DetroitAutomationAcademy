@@ -7,8 +7,9 @@ This script demonstrates reading input from a button connected to GPIO pin 18.
 It prints a message when the button is pressed.
 """
 
-import RPi.GPIO as GPIO
 import time
+
+import RPi.GPIO as GPIO
 
 # Set up GPIO mode
 GPIO.setmode(GPIO.BCM)
@@ -19,6 +20,7 @@ BUTTON_PIN = 18
 # Set up the pin as an input with pull-up resistor
 GPIO.setup(BUTTON_PIN, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
+
 def button_pressed(pin):
     """
     Callback function called when button is pressed.
@@ -27,6 +29,7 @@ def button_pressed(pin):
         pin (int): GPIO pin number
     """
     print("Button pressed on pin", pin)
+
 
 # Add event detection for button press (falling edge)
 GPIO.add_event_detect(BUTTON_PIN, GPIO.FALLING, callback=button_pressed, bouncetime=200)

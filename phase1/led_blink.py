@@ -7,8 +7,9 @@ This script demonstrates basic GPIO control on a Raspberry Pi.
 It blinks an LED connected to GPIO pin 17.
 """
 
-import RPi.GPIO as GPIO
 import time
+
+import RPi.GPIO as GPIO
 
 # Set up GPIO mode
 GPIO.setmode(GPIO.BCM)
@@ -18,6 +19,7 @@ LED_PIN = 17
 
 # Set up the pin as an output
 GPIO.setup(LED_PIN, GPIO.OUT)
+
 
 def blink_led(pin, duration=1.0, times=5):
     """
@@ -31,8 +33,9 @@ def blink_led(pin, duration=1.0, times=5):
     for _ in range(times):
         GPIO.output(pin, GPIO.HIGH)  # Turn LED on
         time.sleep(duration)
-        GPIO.output(pin, GPIO.LOW)   # Turn LED off
+        GPIO.output(pin, GPIO.LOW)  # Turn LED off
         time.sleep(duration)
+
 
 if __name__ == "__main__":
     try:
