@@ -41,7 +41,148 @@ Callback function executed when a button press is detected.
 
 **Returns:** None
 
-**Notes:** This function is automatically called by GPIO event detection when a falling edge is detected on the specified pin.
+**Notes:** This function is automatically called by GPIO event detection when a falling edge is detected on the specified pin. This demonstrates event-driven programming, which is more efficient than polling in a loop.
+
+**Example:**
+```python
+import RPi.GPIO as GPIO
+
+GPIO.setmode(GPIO.BCM)
+BUTTON_PIN = 18
+GPIO.setup(BUTTON_PIN, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+
+def button_pressed(pin):
+    print("Button pressed on pin", pin)
+
+GPIO.add_event_detect(BUTTON_PIN, GPIO.FALLING, callback=button_pressed, bouncetime=200)
+# Bouncetime=200ms prevents multiple triggers from mechanical bounce
+```
+
+**Common Patterns:**
+- **Pull-up resistor:** Keeps pin HIGH by default; button press pulls it LOW (falling edge)
+- **Bouncetime:** Debounce delay (milliseconds) to ignore multiple rapid triggers from button bounce
+- **Edge detection:** `GPIO.FALLING` (press), `GPIO.RISING` (release), `GPIO.BOTH` (either)
+
+---
+
+## Module: phase2.cad_design
+
+This module provides tools for generating parametric 3D models in STL format for 3D printing and G-code for laser cutting.
+
+### Class: STLWriter
+
+Writes 3D model data to STL (STereoLithography) binary format for 3D printing.
+
+#### Constructor: STLWriter(filename)
+
+**Parameters:**
+- `filename` (str): Output file path (e.g., `'rover_chassis.stl'`)
+
+#### Methods:
+
+##### add_triangle(v1, v2, v3, normal=None)
+
+Add a triangular face to the 3D model.
+
+**Parameters:**
+- `v1, v2, v3` (tuple): Vertex coordinates as (x, y, z) tuples
+- `normal` (tuple, optional): Surface normal vector; auto-calculated if None
+
+**Returns:** None
+
+**Example:**
+```python
+stl = STLWriter('my_model.stl')
+stl.add_triangle((0, 0, 0), (1, 0, 0), (0.5, 1, 0))
+stl.write()
+```
+
+##### write()
+
+Serialize all triangles to binary STL file.
+
+**Returns:** None
+
+**Output:** Binary file with 80-byte header, triangle count, and triangle data
+
+---
+
+### Function: add_cuboid(stl, x, y, z, dx, dy, dz)
+
+Helper function to add a rectangular box to an STL writer.
+
+**Parameters:**
+- `stl` (STLWriter): The STL writer instance
+- `x, y, z` (float): Origin coordinates (bottom-front-left corner)
+- `dx, dy, dz` (float): Box dimensions in x, y, z directions
+
+**Returns:** None
+
+**Example:**
+```python
+stl = STLWriter('box.stl')
+add_cuboid(stl, 0, 0, 0, 10, 5, 3)  # 10×5×3 box at origin
+stl.write()
+```
+
+---
+
+### Function: create_rover_chassis(width=10, height=5, length=15)
+
+Generate a simple rover chassis (rectangular body).
+
+**Parameters:**
+- `width` (float): Width of chassis (default: 10mm)
+- `height` (float): Height of chassis (default: 5mm)
+- `length` (float): Length of chassis (default: 15mm)
+
+**Returns:** None
+
+**Output:** Generates `rover_chassis.stl` file in current directory
+
+**Learning Point:** Demonstrates how parametric inputs control model dimensions; changing parameters generates different part sizes without re-coding geometry.
+
+---
+
+### Function: create_sensor_mount(radius=2, height=3)
+
+Generate a cylindrical sensor mount (e.g., for ultrasonic sensors).
+
+**Parameters:**
+- `radius` (float): Cylinder radius (default: 2mm)
+- `height` (float): Cylinder height (default: 3mm)
+
+**Returns:** None
+
+**Output:** Generates `sensor_mount.stl` file in current directory
+
+**Learning Point:** Demonstrates circular geometry and how to generate parts for real rover hardware integration.
+
+---
+
+### G-Code Generation Pattern
+
+Phase 2 teaches parametric CAD, but students also generate G-code for laser cutting. The workflow:
+
+1. **Python generates geometry:** Functions like `laser_cut_circle()` produce X, Y, Z coordinates
+2. **Convert to G-code:** Linearize paths and add laser control commands (M3 for on, M5 for off)
+3. **Output file:** Save as `.gcode` for Epilog Fusion Maker or other laser cutters
+
+**Example G-code structure:**
+```
+G21          ; Set units to millimeters
+G90          ; Absolute positioning
+M3 S255      ; Laser on at full power
+G0 Z5        ; Move to safe height
+G0 X0 Y0     ; Move to start position
+G1 Z-1 F100  ; Lower to cutting depth
+G1 X10 F200  ; Cut line to (10, 0)
+G0 Z5        ; Raise to safe height
+M5           ; Laser off
+M30          ; End program
+```
+
+**Curriculum Link:** See [../activations/README.md](../activations/README.md) for material-specific power/speed parameters and design recommendations.
 
 ---
 
