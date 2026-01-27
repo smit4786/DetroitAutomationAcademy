@@ -104,4 +104,4 @@ gantt
     *   **Feb 3 (Mon):** 4:00-5:00 PM, 6:00-7:00 PM (60 min slots).
     *   **Feb 4 (Tue):** 9:00 AM, 11:00 AM, 4:30 PM (90 min slots).
     *   **Audience:** ~100 guests.
-    *   **Activation Plan:** [BGC Activation Plan](bgc_activation_plan.md).
+    *   **Event Guide:** See [bgc_event_guide.md](bgc_event_guide.md) (three formats available).

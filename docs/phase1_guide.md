@@ -22,7 +22,19 @@ By the end of Phase 1, students will be able to:
 - Push buttons
 - Optional: Temperature sensor (DS18B20), ultrasonic distance sensor
 
-## Current-Limiting Resistors for LEDs
+### Hardware References
+
+For detailed Raspberry Pi pinout and specifications:
+- **Raspberry Pi GPIO Pinout Diagram:** [https://pinout.xyz](https://pinout.xyz) — Interactive pin reference
+- **Official Raspberry Pi Documentation:** [https://www.raspberrypi.com/documentation/computers/raspberry-pi.html](https://www.raspberrypi.com/documentation/computers/raspberry-pi.html)
+- **RPi.GPIO Documentation:** [https://pypi.org/project/RPi.GPIO/](https://pypi.org/project/RPi.GPIO/)
+
+**BCM vs. BOARD Pin Numbering:**
+- **BCM (Broadcom)**: Uses GPIO numbering (e.g., GPIO 17) — preferred for code
+- **BOARD**: Uses physical pin numbers (e.g., Pin 11) — useful for hardware wiring
+- Our Phase 1 examples use **BCM mode** (set with `GPIO.setmode(GPIO.BCM)`)
+
+---
 
 ### Why LEDs Need Current-Limiting Resistors
 

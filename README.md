@@ -1,10 +1,24 @@
-# Detroit Automation Academy: Lab Environment
+# Detroit Automation Academy
 
-**Status:** Beta
-**Context:** Virtual Lab Infrastructure
+**Status:** Active  
+**Context:** Educational robotics and automation curriculum
+
+## 📚 Documentation
+
+**New to the academy?** Start here: [**Documentation Index (docs/INDEX.md)**](docs/INDEX.md)
+
+This guides you to the right resources based on your role:
+- **Students** → Phase 1, 2, 3 guides + API reference
+- **Instructors** → Curriculum guides + event planning
+- **Event Planners** → Boys & Girls Club event guide
+- **Developers** → Quick start + API reference + copilot instructions
+- **Donors/Partners** → Project plan + venture showcase guide
 
 ## Overview
-This repository contains the infrastructure-as-code (IaC) configurations for the Detroit Automation Academy's "Virtual Lab". It provides a standardized development environment for students to practice Python scripting, database management, and CI/CD pipelines without needing complex local installations.
+
+This repository contains the **curriculum**, **code examples**, and **event workflows** for the Detroit Automation Academy. The academy teaches industrial automation through three progressive phases: Python fundamentals with microcontrollers (Phase 1), CAD design and rapid prototyping (Phase 2), and autonomous systems with sensor fusion (Phase 3).
+
+**For Virtual Lab infrastructure** (Docker, Vagrant, Jenkins), see the separate [`daa-lab-environment`](https://github.com/smit4786/daa-lab-environment) repository.
 
 ## Features
 *   **Docker Compose:** A unified container stack including:

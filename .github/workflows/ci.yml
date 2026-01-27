@@ -1,0 +1,121 @@
+name: Code Quality & Testing
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  lint-and-format:
+    runs-on: ubuntu-latest
+    name: Lint & Format Check
+
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install black flake8
+      
+      - name: Check code formatting with Black
+        run: black --check --line-length 88 .
+        continue-on-error: true
+      
+      - name: Lint with Flake8
+        run: |
+          # E203 and W503 are ignored per pyproject.toml config
+          flake8 --max-line-length=88 --extend-ignore=E203,W503 phase1/ phase2/ phase3/ test_examples.py
+        continue-on-error: true
+
+  test-rover-simulation:
+    runs-on: ubuntu-latest
+    name: Test Phase 3 Rover Simulation
+
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest
+      
+      - name: Run Phase 3 tests
+        run: |
+          python -m pytest test_examples.py::TestPhase3Rover -v
+        continue-on-error: true
+
+  test-all:
+    runs-on: ubuntu-latest
+    name: Run All Tests
+
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest
+      
+      - name: Run all tests
+        run: python test_examples.py
+        continue-on-error: true
+
+  documentation:
+    runs-on: ubuntu-latest
+    name: Documentation Check
+
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Check documentation index exists
+        run: |
+          if [ ! -f "docs/INDEX.md" ]; then
+            echo "ERROR: docs/INDEX.md not found!"
+            exit 1
+          fi
+          echo "✓ Documentation index found"
+      
+      - name: Check copilot instructions
+        run: |
+          if [ ! -f ".github/copilot-instructions.md" ]; then
+            echo "ERROR: .github/copilot-instructions.md not found!"
+            exit 1
+          fi
+          echo "✓ Copilot instructions found"
+      
+      - name: Validate key documentation files
+        run: |
+          docs_files=(
+            "docs/quick_start.md"
+            "docs/phase1_guide.md"
+            "docs/phase2_guide.md"
+            "docs/phase3_guide.md"
+            "docs/api_reference.md"
+            "docs/bgc_event_guide.md"
+          )
+          
+          for file in "${docs_files[@]}"; do
+            if [ ! -f "$file" ]; then
+              echo "WARNING: Expected documentation file missing: $file"
+            else
+              lines=$(wc -l < "$file")
+              echo "✓ $file ($lines lines)"
+            fi
+          done
