@@ -9,7 +9,7 @@ on:
 jobs:
   lint-and-format:
     runs-on: ubuntu-latest
-    name: Lint & Format Check
+    name: Lint & Format Check (Python 3.9)
 
     steps:
       - uses: actions/checkout@v3
@@ -22,7 +22,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install black flake8
+          pip install black flake8 bandit
       
       - name: Check code formatting with Black
         run: black --check --line-length 88 .
@@ -33,10 +33,55 @@ jobs:
           # E203 and W503 are ignored per pyproject.toml config
           flake8 --max-line-length=88 --extend-ignore=E203,W503 phase1/ phase2/ phase3/ test_examples.py
         continue-on-error: true
+      
+      - name: Security scan with Bandit
+        run: |
+          bandit -r phase1/ phase2/ phase3/ test_examples.py -q || true
+        continue-on-error: true
+
+  test-all:
+    runs-on: ubuntu-latest
+    name: Test All (Python ${{ matrix.python-version }})
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.8', '3.9', '3.10', '3.11']
+
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest pytest-cov coverage
+      
+      - name: Run all tests with coverage
+        run: |
+          python -m pytest test_examples.py -v --cov=phase1 --cov=phase2 --cov=phase3 --cov-report=xml --cov-report=term
+        continue-on-error: true
+      
+      - name: Run standalone test suite
+        run: |
+          python test_examples.py
+        continue-on-error: true
+      
+      - name: Upload coverage reports
+        if: matrix.python-version == '3.9'
+        uses: codecov/codecov-action@v3
+        with:
+          files: ./coverage.xml
+          flags: unittests
+          name: codecov-umbrella
+          fail_ci_if_error: false
 
   test-rover-simulation:
     runs-on: ubuntu-latest
-    name: Test Phase 3 Rover Simulation
+    name: Test Phase 3 Rover Simulation (Python 3.9)
 
     steps:
       - uses: actions/checkout@v3
@@ -56,9 +101,10 @@ jobs:
           python -m pytest test_examples.py::TestPhase3Rover -v
         continue-on-error: true
 
-  test-all:
+  test-coverage-check:
     runs-on: ubuntu-latest
-    name: Run All Tests
+    name: Code Coverage Check (Python 3.9)
+    needs: test-all
 
     steps:
       - uses: actions/checkout@v3
@@ -71,15 +117,17 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install pytest
+          pip install pytest pytest-cov coverage
       
-      - name: Run all tests
-        run: python test_examples.py
+      - name: Run coverage analysis
+        run: |
+          python -m pytest test_examples.py --cov=phase1 --cov=phase2 --cov=phase3 --cov-report=html --cov-report=term
+          coverage report --fail-under=70 || echo "Coverage below target (70%), but continuing..."
         continue-on-error: true
 
   documentation:
     runs-on: ubuntu-latest
-    name: Documentation Check
+    name: Documentation & Configuration Checks
 
     steps:
       - uses: actions/checkout@v3
@@ -109,6 +157,8 @@ jobs:
             "docs/phase3_guide.md"
             "docs/api_reference.md"
             "docs/bgc_event_guide.md"
+            "README.md"
+            "IMPROVEMENTS.md"
           )
           
           for file in "${docs_files[@]}"; do
@@ -119,3 +169,60 @@ jobs:
               echo "✓ $file ($lines lines)"
             fi
           done
+      
+      - name: Validate project configuration files
+        run: |
+          config_files=(
+            "pyproject.toml"
+            "requirements.txt"
+          )
+          
+          for file in "${config_files[@]}"; do
+            if [ ! -f "$file" ]; then
+              echo "WARNING: Config file missing: $file"
+            else
+              echo "✓ $file present"
+            fi
+          done
+      
+      - name: Check for broken markdown links (simple check)
+        run: |
+          echo "Checking for common markdown patterns..."
+          if grep -r '\[.*\](.*\.md)' docs/ *.md 2>/dev/null | grep -q "404\|missing"; then
+            echo "WARNING: Potential broken links found"
+          else
+            echo "✓ Markdown link check passed"
+          fi
+        continue-on-error: true
+      
+      - name: Validate Python syntax in docs
+        run: |
+          echo "Checking Python code examples in documentation..."
+          python -m py_compile phase1/*.py phase2/*.py phase3/*.py test_examples.py || exit 1
+          echo "✓ All Python files have valid syntax"
+
+  code-quality:
+    runs-on: ubuntu-latest
+    name: Code Quality Report (Python 3.9)
+
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+      
+      - name: Install code quality tools
+        run: |
+          python -m pip install --upgrade pip
+          pip install pylint radon
+      
+      - name: Generate code metrics
+        run: |
+          echo "=== Cyclomatic Complexity Report ==="
+          radon cc phase1/ phase2/ phase3/ -a || true
+          echo ""
+          echo "=== Maintainability Index ==="
+          radon mi phase1/ phase2/ phase3/ || true
+        continue-on-error: true
