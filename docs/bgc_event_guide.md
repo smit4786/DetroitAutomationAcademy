@@ -8,7 +8,7 @@
 
 ## Event Overview
 
-This guide consolidates three complementary event formats into a flexible framework. **Choose one primary format** based on audience and timing, or **mix formats** for different time slots (e.g., "Visual Mode" Monday evening, "Full Workshop" Tuesday morning).
+This guide consolidates three complementary event formats into a flexible framework. **Choose one primary format** based on audience and timing, or **mix formats** for different time slots (e.g., "Visual Mode" Tuesday evening, "Full Workshop" Wednesday morning).
 
 ### Format Comparison
 
@@ -22,7 +22,7 @@ This guide consolidates three complementary event formats into a flexible framew
 
 ## FORMAT A: Physical Computing Showcase (Most Accessible)
 
-**Best for:** Monday evening (high foot traffic), families, broad audiences
+**Best for:** Tuesday evening (high foot traffic), families, broad audiences
 
 ### Zone 1: The "Design Lab" (Software & Git)
 
@@ -100,7 +100,7 @@ This guide consolidates three complementary event formats into a flexible framew
 
 ### Schedule: Physical Computing Showcase
 
-**Monday, Feb 3rd (60-Minute Slots)**
+**Tuesday, Feb 3rd (60-Minute Slots)**
 - **4:00–5:00 PM: Visual Mode** (High foot traffic expected)
   - 3D printers running continuously
   - Rovers in demo mode (looping autonomous path)
@@ -110,7 +110,7 @@ This guide consolidates three complementary event formats into a flexible framew
   - Students invite guests to generate custom token files at Zone 1
   - Guests can submit their STL for printing at Zone 2
 
-**Tuesday, Feb 4th (90-Minute Slots)**
+**Wednesday, Feb 4th (90-Minute Slots)**
 - **9:00 AM & 11:00 AM: Mini-Workshops**
   - Zone 1: 10-minute "Code to CAD" session
   - Zone 3: "Robot Race" — students explain logic, then run timed course
@@ -142,7 +142,7 @@ This guide consolidates three complementary event formats into a flexible framew
 
 ## FORMAT B: E-Commerce & AI Workshop (Entrepreneurship Focus)
 
-**Best for:** Tuesday 90-minute slots, student groups, aspiring entrepreneurs
+**Best for:** Wednesday 90-minute slots, student groups, aspiring entrepreneurs
 
 ### Step 1: The AI Design Studio (Concept to CAD)
 
@@ -220,7 +220,7 @@ This guide consolidates three complementary event formats into a flexible framew
 
 ### Schedule: E-Commerce & AI Workshop
 
-**Tuesday, Feb 4th (90-Minute Slots)**
+**Wednesday, Feb 4th (90-Minute Slots)**
 - **9:00 AM, 11:00 AM, 4:30 PM:** Full-Stack Founder Workshops
   - Small groups (8–12 people) move through all three steps
   - Total runtime: ~90 minutes (design ~20 min, manufacturing ~20 min + printing, e-commerce listing ~20 min)
@@ -251,7 +251,7 @@ This guide consolidates three complementary event formats into a flexible framew
 
 ## FORMAT C: Venture Showcase (Donor & Partner Engagement)
 
-**Best for:** Tuesday longer slots, donor visits, school officials, press
+**Best for:** Wednesday longer slots, donor visits, school officials, press
 
 ### Station 1: The R&D Lab (AI & Parametric Design)
 
@@ -328,7 +328,7 @@ This guide consolidates three complementary event formats into a flexible framew
 
 ### Schedule: Venture Showcase
 
-**Tuesday, Feb 4th (120+ Minutes)**
+**Wednesday, Feb 4th (120+ Minutes)**
 - **9:00 AM & 11:00 AM:** Guided tour groups (20–30 people each)
   - 30 min per station
   - 8 students (2 per station) with professional, defined roles
@@ -469,7 +469,7 @@ A: Pre-load the repository on each laptop as a backup; or have students copy-pas
 A: Format A (showcase): 10–15 min per zone. Format B (workshop): 20–25 min per zone. Format C (donor): 30 min per station.
 
 **Q: Can we run multiple formats simultaneously?**  
-A: Yes, if you have separate zones/rooms. E.g., Monday evening = Format A (walk-through), Tuesday = Formats B & C (workshops + donor tour).
+A: Yes, if you have separate zones/rooms. E.g., Tuesday evening = Format A (walk-through), Wednesday = Formats B & C (workshops + donor tour).
 
 **Q: What's the cost breakdown per keychain?**  
 A: Materials (~$0.50) + overhead (labor, utilities, equipment depreciation = ~$1–2) → sell for $5–10.
