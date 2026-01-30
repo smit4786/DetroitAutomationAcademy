@@ -2,7 +2,18 @@
 ## Detroit Automation Academy - Finance Documents Index
 
 **Date:** January 30, 2026  
-**Status:** 🟢 All documents ready
+**Status:** 🟢 All documents ready  
+**Total Documents:** 6 (4 framework + 2 summary)
+
+---
+
+## 🚀 START HERE
+
+### 📋 New Summary Documents
+- **[DAA_EXPENSE_FRAMEWORK_COMPLETE.md](../DAA_EXPENSE_FRAMEWORK_COMPLETE.md)** - Project overview & implementation guide
+- **[DAA_FILES_SUMMARY.txt](../DAA_FILES_SUMMARY.txt)** - Complete file reference with troubleshooting
+
+**Time to read:** 10-15 minutes total for both
 
 ---
 
@@ -76,6 +87,50 @@
 4. Schedule with cron for automatic weekly/monthly syncs
 
 **Similar to:** Personal budget_sync.py but tailored for academy expenses
+
+---
+
+### 4. DAA EXPENSE FRAMEWORK COMPLETE (Summary Document)
+**File:** [../DAA_EXPENSE_FRAMEWORK_COMPLETE.md](../DAA_EXPENSE_FRAMEWORK_COMPLETE.md)
+
+**What it covers:**
+- What was created and why
+- Financial snapshot at a glance
+- How documents work together
+- GitHub verification & status
+- Quality checklist
+- Next immediate actions
+- Quick reference links
+
+**Best for:**
+- Project overview
+- Executive summary
+- Understanding what you have
+- Planning next steps
+
+**Read time:** 10-15 minutes
+
+---
+
+### 5. DAA FILES SUMMARY (Complete Reference)
+**File:** [../DAA_FILES_SUMMARY.txt](../DAA_FILES_SUMMARY.txt)
+
+**What it covers:**
+- Complete file index with descriptions
+- Financial snapshot
+- Quick start sequence checklist
+- How to use each document by role
+- GitHub status verification
+- Troubleshooting guide
+- Related documents reference
+
+**Best for:**
+- Finding what you need
+- Understanding document relationships
+- Troubleshooting questions
+- Role-specific guidance
+
+**Read time:** 5-10 minutes
 
 ---
 
@@ -252,12 +307,16 @@ daa_expense_sync.py
 
 ## 🆘 QUICK REFERENCE LINKS
 
-**Within Detroit Automation Academy Folder:**
-- EXPENSE_MANAGEMENT_FRAMEWORK.md → Complete expense guide
-- GRANT_TRACKING_FRAMEWORK.md → Fundraising guide
-- daa_expense_sync.py → Automation script
+**Core Documents (This Folder):**
+- [EXPENSE_MANAGEMENT_FRAMEWORK.md](EXPENSE_MANAGEMENT_FRAMEWORK.md) → Complete expense guide (15 KB)
+- [GRANT_TRACKING_FRAMEWORK.md](GRANT_TRACKING_FRAMEWORK.md) → Fundraising guide (17 KB)
+- [daa_expense_sync.py](daa_expense_sync.py) → Automation script (10 KB)
 
-**Related (Parent Directory - Resumes-and-Cover-Letters):**
+**Summary Documents (Parent Folder):**
+- [DAA_EXPENSE_FRAMEWORK_COMPLETE.md](../DAA_EXPENSE_FRAMEWORK_COMPLETE.md) → Project overview (12 KB)
+- [DAA_FILES_SUMMARY.txt](../DAA_FILES_SUMMARY.txt) → File index & troubleshooting (5 KB)
+
+**Related Resources (Parent Directory):**
 - PERSONAL_BUDGET_COMPREHENSIVE.md → Similar personal budget framework (reference)
 - GOOGLE_CLOUD_WALKTHROUGH.md → Setup instructions (applies to DAA too)
 - budget_sync.py → Similar automation script (reference)
@@ -285,4 +344,5 @@ daa_expense_sync.py
 **Review Schedule:** Monthly with finance team
 
 **Version History:**
-- v1.0 (Jan 30, 2026) - Initial framework documents created
+- v1.1 (Jan 30, 2026) - Added summary documents (EXPENSE_FRAMEWORK_COMPLETE.md, FILES_SUMMARY.txt)
+- v1.0 (Jan 30, 2026) - Initial framework documents created (4 core files)
