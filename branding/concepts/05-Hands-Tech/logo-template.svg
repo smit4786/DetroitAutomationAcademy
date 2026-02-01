@@ -1,0 +1,48 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Concept 5: Hands + Technology Mockup Template -->
+  <!-- Human-centered innovation -->
+  
+  <!-- Left hand (open, reaching) -->
+  <g id="left-hand" fill="none" stroke="#0066CC" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Palm -->
+    <path d="M 50 120 Q 40 100 50 80"/>
+    <!-- Thumb -->
+    <path d="M 55 100 Q 45 95 40 85"/>
+    <!-- Fingers -->
+    <path d="M 60 85 Q 55 65 60 50"/>
+    <path d="M 70 80 Q 70 55 75 35"/>
+    <path d="M 80 85 Q 85 60 90 40"/>
+    <path d="M 85 95 Q 95 75 100 55"/>
+  </g>
+  
+  <!-- Right hand (building/holding) -->
+  <g id="right-hand" fill="none" stroke="#CC5522" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Palm -->
+    <path d="M 150 120 Q 160 100 150 80"/>
+    <!-- Thumb -->
+    <path d="M 145 100 Q 155 95 160 85"/>
+    <!-- Fingers -->
+    <path d="M 140 85 Q 145 65 140 50"/>
+    <path d="M 130 80 Q 130 55 125 35"/>
+    <path d="M 120 85 Q 115 60 110 40"/>
+    <path d="M 115 95 Q 105 75 100 55"/>
+  </g>
+  
+  <!-- Technology element (gear in center) -->
+  <g id="tech" fill="#66CC00" opacity="0.7">
+    <circle cx="100" cy="100" r="15" fill="none" stroke="#66CC00" stroke-width="2"/>
+    <polygon points="100,85 108,95 100,105 92,95" fill="#66CC00"/>
+    <circle cx="100" cy="100" r="4" fill="#66CC00"/>
+  </g>
+  
+  <!-- Connection lines -->
+  <g stroke="#66CC00" stroke-width="1.5" stroke-dasharray="2,2" opacity="0.5">
+    <line x1="85" y1="95" x2="70" y2="90"/>
+    <line x1="115" y1="95" x2="130" y2="90"/>
+  </g>
+  
+  <!-- Label -->
+  <text x="100" y="160" text-anchor="middle" font-size="8" fill="#999">
+    Hands + Technology (Template)
+  </text>
+</svg>
