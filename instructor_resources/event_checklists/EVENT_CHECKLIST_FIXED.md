@@ -298,111 +298,44 @@
 
 #### Zone 2: Laser Cutter Issues
 - **Overheat:** Wait 10-15 minutes, verify ventilation, resume
-- **G-code error:** Load backup G-code from USB, test square first
-- **No backup:** Distribute pre-cut tokens (prep 50 extras during rehearsal)
-- **Power loss:** Have emergency shutdown checklist posted on wall
-- **Recovery time estimate:** 5-20 minutes depending on issue
+- **Misalignment:** Check focal length, re-run test cut on scrap material
+- **Software crash:** Restart laser cutter controller, reload G-code file
+- **Emergency:** Press emergency stop, activate fire extinguisher if needed
 
-#### Zone 3: Rover Failures
-- **Motor malfunction:** Switch immediately to Rover 2 (backup unit)
-- **Battery dead:** Have backup battery pack charged (keep at registration desk)
-- **SSH timeout:** Power cycle Pi (30-second restart)
-- **Sensor malfunction:** Demonstrate manual movement commands only
-- **Recovery time estimate:** 2-5 minutes
+**Recovery time:** 5-15 minutes. Distribute pre-cut tokens while troubleshooting.
 
-#### Zone 1: Laptop Crash
-- [ ] Force restart laptop (Cmd+Control+Eject or Power button hold)
-- [ ] If unresponsive, switch to Laptop 2 or 3
-- [ ] Load backup files from USB drive
-- [ ] Recovery time: <2 minutes
+#### Zone 3: Rover Failure
+- **Battery dead:** Switch to Rover 2 immediately
+- **SSH connection lost:** Power cycle Raspberry Pi, reconnect
+- **Sensor malfunction:** Switch to Rover 2 or show video demo
+- **Motor failure:** Switch to Rover 2 and inspect rover for damage
 
-### Capacity & Flow Management
-**If any zone becomes bottlenecked:**
-- [ ] Admin Assistant redirects guests: "Zone [X] has a 15-min wait. Zone [Y] is ready now!"
-- [ ] Student assistants increase demo speed (reduce explanations, focus on visuals)
-- [ ] Extend zone demo time if crowd is small and engaged
+**Recovery time:** 2-3 minutes (backup rover ready to go)
 
-### Material Contingencies
-| Item | Quantity | If Short | Backup Plan |
-|------|----------|----------|------------|
-| Git handouts | 50 | Reprint at library or print at B&G Club | Digital QR code link |
-| CAD cheat sheets | 50 | Handwrite key terms on paper | Display on projector |
-| Acrylic blanks | 200 | Print extras Wed AM | Pre-cut tokens (75 prepared) |
-| Interest forms | 100 | Borrow blank paper + pen | Collect verbally, enter later |
-| Tokens | N/A | Use pre-cut backups | Distribute placeholder certificate |
+#### Zone 1: Laptop Freeze
+- **Issue:** Git clone hangs or Python script crashes
+- **Solution 1:** Force quit (Ctrl+C) and try again
+- **Solution 2:** Switch to Laptop 2 (identical setup)
+- **Solution 3:** Use USB backup drive with pre-downloaded repository
+
+**Recovery time:** 1-2 minutes
 
 ---
 
-## 🎯 ZONE CAPACITY & ROTATION
+## 📊 ATTENDANCE & SUCCESS METRICS
 
-**Recommended per zone:**
-- **Max capacity:** 15 guests per zone
-- **Optimal demo time:** 15-20 minutes per guest group
-- **Target flow:** Guests rotate through all 3 zones within 60-90 min
+**Target Attendance (Both Days Combined):**
+- Minimum: 150 guests
+- Target: 250-300 guests
+- Each guest should visit all 3 zones (45-60 minutes total experience)
 
-**If bottleneck occurs:**
-1. Pause new entries to zone with 15+ guests
-2. Redirect to zone with <5 guests
-3. Offer "express demo" (5-min version) if needed
-
----
-
-## 👥 STAFFING ASSIGNMENTS (To be filled in)
-
-### Core Leadership
-- **Event Coordinator:** _________________________ (overall command)
-- **Roaming Troubleshooter:** _________________________ (NO zone assignment, moves freely)
-- **Media Coordinator:** _________________________ (photos, journalist liaison)
-
-### Zone Leads (with backup)
-- **Zone 1 Lead:** _________________________ | **Backup:** _________________________
-- **Zone 2 Lead:** _________________________ | **Backup:** _________________________
-- **Zone 3 Lead:** _________________________ | **Backup:** _________________________
+**Success Criteria:**
+- ✅ Zero safety incidents (firearm, injury, equipment damage)
+- ✅ All equipment operational >95% of event time
+- ✅ >80% guest satisfaction (measured via interest form or brief survey)
+- ✅ >50 quality interest forms collected (for enrollment pipeline)
+- ✅ Media coverage (social posts, local news coverage)
 
 ---
 
-## 📊 GUEST COMMUNICATION SCRIPTS
-
-Scripts for each zone are provided in separate documents:
-- **ZONE_1_SCRIPT_DESIGN_LAB.md** - Git & Python CAD walkthrough
-- **ZONE_2_SCRIPT_RAPID_PROTO.md** - Laser cutting demonstration
-- **ZONE_3_SCRIPT_AUTONOMOUS.md** - Rover navigation & sensor fusion
-
-Distribute these to student assistants during Feb 2 rehearsal.
-
----
-
-## 📊 SUCCESS METRICS (Define Targets)
-
-**Before event, leadership should agree on:**
-- [ ] Target attendance: _______ guests total
-- [ ] Success threshold for interest forms: _______ forms
-- [ ] Token distribution goal: _______ tokens
-- [ ] Media coverage goal: _______ journalists/outlets
-- [ ] Post-event conversion rate: _______% (forms → applications)
-
----
-
-## 📸 PHOTO CHECKLIST (Media Kit Priorities)
-
-**Must-Capture Shots:**
-- [ ] Wide shot: all 3 zones active with guests
-- [ ] Zone 1: Student assisting guest with Git clone command
-- [ ] Zone 2: Laser cutter in action (close-up of cutting process)
-- [ ] Zone 2: Guest holding commemorative token (happy reaction)
-- [ ] Zone 3: Rover navigating obstacle course
-- [ ] Zone 3: Student explaining ultrasonic sensor to guest
-- [ ] Justin Smith engaging with student/guest (founder visibility)
-- [ ] Group photo: all staff and student assistants (Day 2 end)
-
-**Bonus Shots (If Time Permits):**
-- [ ] Kids/families interacting with technology
-- [ ] Diverse age range of guests (highlight accessibility)
-- [ ] Registration table (guests filling out interest forms)
-- [ ] Event banner/signage (branding visibility)
-
----
-
-**✅ Checklist complete? Review with leadership team at Feb 5 meeting.**
-
-**Version 2.0** | February 2, 2025 | Fixed & Enhanced with Contingencies
+**For questions during setup or event day, contact Justin Smith: (313) XXX-XXXX**
