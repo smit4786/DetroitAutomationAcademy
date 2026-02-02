@@ -287,6 +287,10 @@
 
 ## 📞 CALENDAR COORDINATION CONTACTS
 
+| Name | Role | Email | Phone |
+|------|------|-------|-------|
+| Nicole Yungers | Staff | nicole.yungers@gmail.com | — |
+
 | Event Type | Primary Contact | Backup Contact |
 |------------|----------------|----------------|
 | **Facility Scheduling** | Admin Assistant | COO |
@@ -316,7 +320,7 @@
 
 **Google Calendar Integration:**
 1. Import this calendar into Google Calendar (convert to .ics format)
-2. Share with leadership@detroitautomationacademy.org
+2. Share with authorized team members via Google Calendar
 3. Set reminders: 1 day before (email), 1 hour before (mobile notification)
 
 **Outlook Integration:**
