@@ -14,6 +14,9 @@ LOCATION:Boys & Girls Club\, Detroit\, Michigan
 ORGANIZER;CN=Justin Smith;EMAIL=dbkrsmith+DAA@gmail.com:mailto:dbkrsmith+DAA@gmail.com
 ATTENDEE;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=Justin Smith;RSVP=TRUE:mailto:dbkrsmith+DAA@gmail.com
 ATTENDEE;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=Nicole Yungers;RSVP=TRUE:mailto:nyungers@detroitautomationacademy.org
+ATTACH;FILENAME=BGC_EVENT_DAY2_SUMMARY.md;VALUE=URI:https://github.com/smit4786/DetroitAutomationAcademy/blob/main/BGC_EVENT_DAY2_SUMMARY.md
+ATTACH;FILENAME=BGC_EVENT_DAY2_QUICK_CHECKLIST.md;VALUE=URI:https://github.com/smit4786/DetroitAutomationAcademy/blob/main/BGC_EVENT_DAY2_QUICK_CHECKLIST.md
+ATTACH;FILENAME=STAFF_NOTIFICATION_BGC_DAY2.md;VALUE=URI:https://github.com/smit4786/DetroitAutomationAcademy/blob/main/STAFF_NOTIFICATION_BGC_DAY2.md
 PRIORITY:1
 SEQUENCE:0
 STATUS:CONFIRMED
@@ -29,6 +32,8 @@ SUMMARY:BGC Event Day 2 - Staff Setup & Briefing
 DESCRIPTION:Morning setup and all-hands briefing for Boys & Girls Club event Day 2.\n\nActivities:\n- General setup (lights\, HVAC\, registration table)\n- Zone-specific equipment verification\n- Signage and marketing materials placement\n- 9:45 AM: All-hands staff briefing (15 minutes)\n- Final walkthroughs and safety review\n\nRequired Attendees: All 18 event staff members\nContact: Justin Smith (Event Coordinator)\n\nSee BGC_EVENT_DAY2_SUMMARY.md for detailed checklist
 LOCATION:Boys & Girls Club\, Detroit\, Michigan
 ORGANIZER;CN=Justin Smith;EMAIL=dbkrsmith+DAA@gmail.com:mailto:dbkrsmith+DAA@gmail.com
+ATTACH;FILENAME=BGC_EVENT_DAY2_SUMMARY.md;VALUE=URI:https://github.com/smit4786/DetroitAutomationAcademy/blob/main/BGC_EVENT_DAY2_SUMMARY.md
+ATTACH;FILENAME=BGC_EVENT_DAY2_QUICK_CHECKLIST.md;VALUE=URI:https://github.com/smit4786/DetroitAutomationAcademy/blob/main/BGC_EVENT_DAY2_QUICK_CHECKLIST.md
 PRIORITY:1
 SEQUENCE:0
 STATUS:CONFIRMED
@@ -44,6 +49,8 @@ SUMMARY:BGC Event Day 2 - Teardown & Data Collection
 DESCRIPTION:Post-event teardown\, data collection\, and initial reporting.\n\nActivities:\n- Equipment shutdown and packing\n- Sign-in sheets and attendance tally\n- Interest form collection and count\n- Token distribution count\n- Photo/video organization\n- Quick staff debrief (issues\, successes\, lessons learned)\n- Brief report to leadership team\n\nRequired Attendees: Event staff (particularly Zone Leads and Coordinators)\n\nDeadline for Preliminary Numbers: 6:00 PM (same day)\nDeadline for Full Summary Report: February 5\, 2:00 PM
 LOCATION:Boys & Girls Club\, Detroit\, Michigan
 ORGANIZER;CN=Justin Smith;EMAIL=dbkrsmith+DAA@gmail.com:mailto:dbkrsmith+DAA@gmail.com
+ATTACH;FILENAME=BGC_EVENT_DAY2_SUMMARY.md;VALUE=URI:https://github.com/smit4786/DetroitAutomationAcademy/blob/main/BGC_EVENT_DAY2_SUMMARY.md
+ATTACH;FILENAME=EVENT_PREP_SUMMARY.md;VALUE=URI:https://github.com/smit4786/DetroitAutomationAcademy/blob/main/EVENT_PREP_SUMMARY.md
 PRIORITY:2
 SEQUENCE:0
 STATUS:CONFIRMED
