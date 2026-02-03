@@ -1,0 +1,53 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Detroit Automation Academy//DAA Event Calendar//EN
+CALSCALE:GREGORIAN
+METHOD:REQUEST
+BEGIN:VEVENT
+UID:daa-bgc-event-day2-feb4-2026@detroitautomationacademy.org
+DTSTAMP:20260203T200000Z
+DTSTART:20260204T100000-05:00
+DTEND:20260204T130000-05:00
+SUMMARY:Boys & Girls Club Event - Detroit Automation Academy Day 2
+DESCRIPTION:Second day of the Detroit Automation Academy showcase at Boys & Girls Club.\n\nEvent Overview:\n- Expected Attendance: 300-400+ guests\n- Three Interactive Demonstration Zones\n- Media Coverage: 2-3 outlets expected\n- Success Target: 50+ interest forms\, 200-250 tokens distributed\n\nZone Details:\nZONE 1: Design Lab (SOFTWARE & GIT)\n- "Turn Code Into Products"\n- Python code to parametric design demonstration\n- Duration: 15-20 minutes per group\n\nZONE 2: Rapid Prototyping (LASER CUTTING)\n- "The Body - Watch Your Design Come to Life"\n- Laser cutting from digital design to physical token\n- Duration: 12-18 minutes per group\n\nZONE 3: Autonomous Systems (ROBOTICS)\n- "The Brain - The Future of Robotics"\n- Rover navigation\, sensor fusion\, autonomous movement\n- Duration: 15-20 minutes per group\n\nStaffing: 18 staff members across all zones\nVenue: Boys & Girls Club\, Detroit\nSetup: 9:00 AM - 10:00 AM\nEvent: 10:00 AM - 1:00 PM\nTeardown: 1:00 PM - 2:00 PM\n\nEmergency Contact: Justin Smith\nPhone: (313) 306-3767\nEmail: dbkrsmith+DAA@gmail.com\n\nFor full event details\, see: BGC_EVENT_DAY2_SUMMARY.md
+LOCATION:Boys & Girls Club\, Detroit\, Michigan
+ORGANIZER;CN=Justin Smith;EMAIL=dbkrsmith+DAA@gmail.com:mailto:dbkrsmith+DAA@gmail.com
+ATTENDEE;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=Justin Smith;RSVP=TRUE:mailto:dbkrsmith+DAA@gmail.com
+ATTENDEE;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=Nicole Yungers;RSVP=TRUE:mailto:nyungers@detroitautomationacademy.org
+PRIORITY:1
+SEQUENCE:0
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+CATEGORIES:Education,Event,Outreach
+END:VEVENT
+BEGIN:VEVENT
+UID:daa-bgc-event-day2-setup-feb4-2026@detroitautomationacademy.org
+DTSTAMP:20260203T200000Z
+DTSTART:20260204T090000-05:00
+DTEND:20260204T100000-05:00
+SUMMARY:BGC Event Day 2 - Staff Setup & Briefing
+DESCRIPTION:Morning setup and all-hands briefing for Boys & Girls Club event Day 2.\n\nActivities:\n- General setup (lights\, HVAC\, registration table)\n- Zone-specific equipment verification\n- Signage and marketing materials placement\n- 9:45 AM: All-hands staff briefing (15 minutes)\n- Final walkthroughs and safety review\n\nRequired Attendees: All 18 event staff members\nContact: Justin Smith (Event Coordinator)\n\nSee BGC_EVENT_DAY2_SUMMARY.md for detailed checklist
+LOCATION:Boys & Girls Club\, Detroit\, Michigan
+ORGANIZER;CN=Justin Smith;EMAIL=dbkrsmith+DAA@gmail.com:mailto:dbkrsmith+DAA@gmail.com
+PRIORITY:1
+SEQUENCE:0
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+CATEGORIES:Education,Event,Planning
+END:VEVENT
+BEGIN:VEVENT
+UID:daa-bgc-event-day2-teardown-feb4-2026@detroitautomationacademy.org
+DTSTAMP:20260203T200000Z
+DTSTART:20260204T130000-05:00
+DTEND:20260204T140000-05:00
+SUMMARY:BGC Event Day 2 - Teardown & Data Collection
+DESCRIPTION:Post-event teardown\, data collection\, and initial reporting.\n\nActivities:\n- Equipment shutdown and packing\n- Sign-in sheets and attendance tally\n- Interest form collection and count\n- Token distribution count\n- Photo/video organization\n- Quick staff debrief (issues\, successes\, lessons learned)\n- Brief report to leadership team\n\nRequired Attendees: Event staff (particularly Zone Leads and Coordinators)\n\nDeadline for Preliminary Numbers: 6:00 PM (same day)\nDeadline for Full Summary Report: February 5\, 2:00 PM
+LOCATION:Boys & Girls Club\, Detroit\, Michigan
+ORGANIZER;CN=Justin Smith;EMAIL=dbkrsmith+DAA@gmail.com:mailto:dbkrsmith+DAA@gmail.com
+PRIORITY:2
+SEQUENCE:0
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+CATEGORIES:Education,Event,Reporting
+END:VEVENT
+END:VCALENDAR
