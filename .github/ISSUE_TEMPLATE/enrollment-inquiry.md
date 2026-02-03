@@ -48,8 +48,8 @@ What's your current education level?
 ### Which program interests you most? *
 Choose all that apply:
 - [ ] **Automation Technology** - Learn robotics, control systems, and industrial automation
-- [ ] **Advanced Manufacturing** - Master CNC machining, 3D printing, and production techniques
-- [ ] **CNC Programming** - Hands-on CAM/CAD programming for precision parts
+- [ ] **Advanced Manufacturing** - Master CNC (Computer Numerical Control) machining, 3D printing, and production techniques
+- [ ] **CNC (Computer Numerical Control) Programming** - Hands-on CAM/CAD programming for precision parts
 - [ ] **Drone Operations & AI** - Explore unmanned systems and autonomous technology
 - [ ] **Still exploring** - Tell us more in "Additional Comments" below
 
