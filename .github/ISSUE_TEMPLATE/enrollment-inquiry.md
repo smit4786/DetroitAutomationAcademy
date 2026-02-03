@@ -14,13 +14,13 @@ Thank you for your interest in the Detroit Automation Academy! This form takes a
 ## 👤 Personal Information *(Required)*
 
 ### Full Name *
-_Example: John Smith_
+[Enter your full name here]
 
 ### Email Address *
-_Example: john@example.com_
+[your.email@example.com]
 
 ### Phone Number *
-_Example: (313) 306-3767_
+[Your phone number, e.g., (313) 555-1234]
 
 ---
 
@@ -68,7 +68,7 @@ How familiar are you with automation/manufacturing tech?
 - [ ] English
 - [ ] Spanish
 - [ ] Arabic
-- [ ] Other: ___________
+- [ ] Other: [specify language]
 
 ### How did you hear about us? *
 _This helps us understand which events and channels are most effective_
@@ -78,17 +78,17 @@ _This helps us understand which events and channels are most effective_
 - [ ] Social Media (Instagram, Facebook, TikTok)
 - [ ] Word of Mouth / Friend Recommendation
 - [ ] Website or Online Search
-- [ ] Other: ___________
+- [ ] Other: [describe where you found us]
 
 ---
 
 ## �💭 Your Interest & Goals
 
 ### Tell Us About Your Interest *
-_What draws you to this program? Examples: career change, exploring a hobby, student project, business idea, etc._
+[Why are you interested in this program? Examples: career change, exploring a hobby, student project, business idea, skill-building, etc.]
 
 ### Additional Comments (Optional)
-_Any other questions or information you'd like to share? We're here to help!_
+[Any other questions or information you'd like to share? We're here to help!]
 
 ---
 
