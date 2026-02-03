@@ -62,7 +62,27 @@ How familiar are you with automation/manufacturing tech?
 
 ---
 
-## 💭 Your Interest & Goals
+## �️ Communication Preferences
+
+### Preferred Language *
+- [ ] English
+- [ ] Spanish
+- [ ] Arabic
+- [ ] Other: ___________
+
+### How did you hear about us? *
+_This helps us understand which events and channels are most effective_
+- [ ] Boys & Girls Club Event (Feb 3-4, 2026) - Detroit
+- [ ] School / Teacher Referral
+- [ ] Community Event or Workshop
+- [ ] Social Media (Instagram, Facebook, TikTok)
+- [ ] Word of Mouth / Friend Recommendation
+- [ ] Website or Online Search
+- [ ] Other: ___________
+
+---
+
+## �💭 Your Interest & Goals
 
 ### Tell Us About Your Interest *
 _What draws you to this program? Examples: career change, exploring a hobby, student project, business idea, etc._
@@ -81,10 +101,19 @@ Help us serve you better:
 
 ---
 
-## 📧 Questions?
-**Contact us anytime:**
+## ⏱️ What Happens Next
+
+Thank you for your interest! Here's what to expect:
+
+1. ✅ **Form Submitted** — You're here now!
+2. 📧 **Confirmation Email** — We'll send details within **1 hour**
+3. 📞 **We'll Reach Out** — Call/text to introduce ourselves (within **24-48 hours**)
+4. 📅 **Schedule Info Session** — Choose a time that works for you
+5. 🎓 **Enroll & Get Started** — Begin your automation journey!
+
+**Questions before submitting?**
 📧 Email: dbkrsmith+DAA@gmail.com
-📞 Phone: (313) 306-3767
+📞 Call/Text: (313) 306-3767
 🌐 Website: detroitautomationacademy.org
 
 ---
