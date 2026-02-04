@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BGC Event - Live Student Signups | Detroit Automation Academy</title>
+    
+    <style>
+        /* ========================================
+           DAA BRANDING - Colors from COLOR_PALETTE_DEVELOPMENT.md
+           ======================================== */
+        :root {
+            --daa-blue: #0066CC;           /* Electric Blue / Tech Blue */
+            --daa-rust: #CC5522;           /* Rust / Detroit Burn */
+            --daa-lime: #66CC00;           /* Lime / Forward Motion */
+            --daa-black: #111111;          /* Warm Black */
+            --daa-gray-dark: #666666;      /* Medium Gray */
+            --daa-gray-light: #F5F5F5;     /* Light Gray */
+            --daa-white: #FFFFFF;          /* White */
+            
+            /* Status Colors */
+            --status-success: #66CC00;
+            --status-warning: #FFB300;
+            --status-error: #CC2233;
+            
+            /* Typography from TYPOGRAPHY_SYSTEM.md */
+            --font-display: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+        
+        /* ========================================
+           GLOBAL RESET & BASE STYLES
+           ======================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            background: linear-gradient(135deg, var(--daa-gray-light) 0%, var(--daa-white) 100%);
+            color: var(--daa-black);
+            padding: 20px;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        /* ========================================
+           HEADER SECTION
+           ======================================== */
+        .header {
+            background: linear-gradient(135deg, var(--daa-blue) 0%, #0052A3 100%);
+            color: var(--daa-white);
+            padding: 30px 40px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0, 102, 204, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            z-index: 0;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header h1 {
+            font-family: var(--font-display);
+            font-size: 2.8em;
+            font-weight: 800;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+        
+        .header .subtitle {
+            font-size: 1.3em;
+            opacity: 0.95;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+        
+        .header .event-info {
+            font-size: 1em;
+            opacity: 0.85;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+        
+        .event-info-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .event-info-item::before {
+            content: '📍';
+            font-size: 1.2em;
+        }
+        
+        .event-info-item:nth-child(2)::before {
+            content: '📅';
+        }
+        
+        .event-info-item:nth-child(3)::before {
+            content: '⏰';
+        }
+        
+        /* ========================================
+           METRICS DASHBOARD (TOP)
+           ======================================== */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .metric-card {
+            background: var(--daa-white);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border-left: 5px solid var(--daa-blue);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .metric-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+        
+        .metric-card.highlight {
+            border-left-color: var(--daa-rust);
+            background: linear-gradient(135deg, var(--daa-white) 0%, #FFF5F0 100%);
+        }
+        
+        .metric-card.success {
+            border-left-color: var(--daa-lime);
+        }
+        
+        .metric-label {
+            font-size: 0.9em;
+            color: var(--daa-gray-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .metric-value {
+            font-family: var(--font-display);
+            font-size: 3em;
+            font-weight: 800;
+            color: var(--daa-blue);
+            line-height: 1;
+            margin-bottom: 5px;
+        }
+        
+        .metric-card.highlight .metric-value {
+            color: var(--daa-rust);
+        }
+        
+        .metric-card.success .metric-value {
+            color: var(--daa-lime);
+        }
+        
+        .metric-subtitle {
+            font-size: 0.85em;
+            color: var(--daa-gray-dark);
+            font-style: italic;
+        }
+        
+        .metric-change {
+            display: inline-block;
+            margin-left: 10px;
+            padding: 4px 8px;
+            background: var(--daa-lime);
+            color: var(--daa-white);
+            border-radius: 5px;
+            font-size: 0.7em;
+            font-weight: 700;
+        }
+        
+        /* ========================================
+           MAIN CONTENT AREA
+           ======================================== */
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        @media (max-width: 1200px) {
+            .content-wrapper {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .section-card {
+            background: var(--daa-white);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.8em;
+            color: var(--daa-blue);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section-title::before {
+            content: '📊';
+            font-size: 1.2em;
+        }
+        
+        /* ========================================
+           ENROLLMENT ISSUES LIST
+           ======================================== */
+        .issues-container {
+            max-height: 600px;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+        
+        .issues-container::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .issues-container::-webkit-scrollbar-track {
+            background: var(--daa-gray-light);
+            border-radius: 10px;
+        }
+        
+        .issues-container::-webkit-scrollbar-thumb {
+            background: var(--daa-blue);
+            border-radius: 10px;
+        }
+        
+        .issue-item {
+            background: var(--daa-gray-light);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 12px;
+            border-left: 4px solid var(--daa-blue);
+            transition: all 0.3s ease;
+            animation: slideIn 0.5s ease;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .issue-item:hover {
+            background: #E8F4FF;
+            transform: translateX(5px);
+        }
+        
+        .issue-item.new {
+            border-left-color: var(--daa-lime);
+            background: #F0FFF0;
+            animation: pulse 2s ease infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(102, 204, 0, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 0 10px rgba(102, 204, 0, 0);
+            }
+        }
+        
+        .issue-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 8px;
+        }
+        
+        .issue-title {
+            font-weight: 700;
+            color: var(--daa-black);
+            font-size: 1.05em;
+            flex: 1;
+        }
+        
+        .issue-number {
+            font-size: 0.85em;
+            color: var(--daa-gray-dark);
+            background: var(--daa-white);
+            padding: 4px 8px;
+            border-radius: 5px;
+            margin-left: 10px;
+        }
+        
+        .issue-meta {
+            font-size: 0.85em;
+            color: var(--daa-gray-dark);
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .issue-time {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .issue-time::before {
+            content: '🕒';
+        }
+        
+        .issue-labels {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+        }
+        
+        .label-badge {
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-size: 0.75em;
+            font-weight: 600;
+            background: var(--daa-blue);
+            color: var(--daa-white);
+        }
+        
+        /* ========================================
+           QUICK STATS SIDEBAR
+           ======================================== */
+        .quick-stats {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .stat-box {
+            background: linear-gradient(135deg, var(--daa-blue) 0%, #0052A3 100%);
+            color: var(--daa-white);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 102, 204, 0.3);
+        }
+        
+        .stat-box h3 {
+            font-family: var(--font-display);
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+        
+        .stat-box .big-number {
+            font-size: 3.5em;
+            font-weight: 800;
+            font-family: var(--font-display);
+            line-height: 1;
+        }
+        
+        .stat-box.rust {
+            background: linear-gradient(135deg, var(--daa-rust) 0%, #A33A1A 100%);
+        }
+        
+        .stat-box.lime {
+            background: linear-gradient(135deg, var(--daa-lime) 0%, #4DA300 100%);
+        }
+        
+        /* ========================================
+           HOURLY BREAKDOWN CHART
+           ======================================== */
+        .hourly-chart {
+            margin-top: 20px;
+        }
+        
+        .hour-bar {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        
+        .hour-label {
+            width: 80px;
+            font-size: 0.9em;
+            color: var(--daa-gray-dark);
+            font-weight: 600;
+        }
+        
+        .bar-container {
+            flex: 1;
+            height: 30px;
+            background: var(--daa-gray-light);
+            border-radius: 5px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--daa-blue) 0%, var(--daa-rust) 100%);
+            transition: width 1s ease;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 10px;
+            color: var(--daa-white);
+            font-weight: 700;
+            font-size: 0.85em;
+        }
+        
+        /* ========================================
+           FOOTER / QUICK LINKS
+           ======================================== */
+        .footer {
+            background: var(--daa-white);
+            padding: 25px 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .quick-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .quick-link-btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: var(--daa-blue);
+            color: var(--daa-white);
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 0.95em;
+        }
+        
+        .quick-link-btn:hover {
+            background: var(--daa-rust);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(204, 85, 34, 0.4);
+        }
+        
+        .quick-link-btn.secondary {
+            background: var(--daa-gray-dark);
+        }
+        
+        /* ========================================
+           QR CODE SECTION
+           ======================================== */
+        .qr-code-section {
+            background: linear-gradient(135deg, var(--daa-blue) 0%, #0052A3 100%);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 8px 30px rgba(0, 102, 204, 0.4);
+            margin: 30px auto;
+            max-width: 400px;
+            border: 3px solid var(--daa-rust);
+        }
+        
+        .qr-code-section h2 {
+            color: var(--daa-white);
+            font-family: var(--font-display);
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .qr-code-section p {
+            color: var(--daa-white);
+            margin-bottom: 20px;
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+        
+        .qr-code-display {
+            background: var(--daa-white);
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .qr-code-display img {
+            width: 280px;
+            height: 280px;
+            display: block;
+            border-radius: 5px;
+        }
+        
+        .qr-code-section .scan-text {
+            color: var(--daa-white);
+            font-size: 0.9em;
+            margin-top: 20px;
+            font-weight: 600;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        .quick-link-btn.secondary:hover {
+            background: var(--daa-lime);
+        }
+        
+        .refresh-info {
+            font-size: 0.9em;
+            color: var(--daa-gray-dark);
+        }
+        
+        .refresh-indicator {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background: var(--daa-lime);
+            border-radius: 50%;
+            margin-right: 8px;
+            animation: blink 2s ease infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+        
+        /* ========================================
+           LOADING & ERROR STATES
+           ======================================== */
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: var(--daa-gray-dark);
+        }
+        
+        .loading-spinner {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            border: 5px solid var(--daa-gray-light);
+            border-top-color: var(--daa-blue);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .error-message {
+            background: #FFE5E5;
+            color: var(--status-error);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid var(--status-error);
+            margin-bottom: 20px;
+        }
+        
+        .no-data {
+            text-align: center;
+            padding: 40px;
+            color: var(--daa-gray-dark);
+            font-size: 1.1em;
+        }
+        
+        .no-data::before {
+            content: '📭';
+            font-size: 3em;
+            display: block;
+            margin-bottom: 15px;
+        }
+        
+        /* ========================================
+           RESPONSIVE DESIGN
+           ======================================== */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .header .subtitle {
+                font-size: 1.1em;
+            }
+            
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .metric-value {
+                font-size: 2.5em;
+            }
+            
+            .footer {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header-content">
+            <h1>🚀 Live Student Signups</h1>
+            <div class="subtitle">Detroit Automation Academy @ BGC</div>
+            <div class="event-info">
+                <span class="event-info-item">Boys & Girls Club, Detroit</span>
+                <span class="event-info-item">February 4, 2026</span>
+                <span class="event-info-item">10:00 AM - 1:00 PM</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- PROMINENT QR CODE SECTION -->
+    <section class="qr-code-section">
+        <h2>📱 Scan to Enroll</h2>
+        <p>Point your camera at the QR code below</p>
+        <div class="qr-code-display">
+            <img src="https://raw.githubusercontent.com/smit4786/DetroitAutomationAcademy/main/qr_codes/enrollment_qr_poster_500px.png" alt="QR Code - Scan to Enroll in Detroit Automation Academy" />
+        </div>
+        <div class="scan-text">👆 Tap or scan with your phone</div>
+    </section>
+
+    <!-- TOP METRICS -->
+    <section class="metrics-grid">
+        <div class="metric-card highlight">
+            <div class="metric-label">Total Registrations</div>
+            <div class="metric-value" id="total-signups">0</div>
+            <div class="metric-subtitle">via GitHub Issues</div>
+        </div>
+        
+        <div class="metric-card">
+            <div class="metric-label">QR Scans (Estimated)</div>
+            <div class="metric-value" id="qr-scans">0</div>
+            <div class="metric-subtitle">based on form submissions</div>
+        </div>
+        
+        <div class="metric-card success">
+            <div class="metric-label">Conversion Rate</div>
+            <div class="metric-value" id="conversion-rate">0%</div>
+            <div class="metric-subtitle">completions / scans</div>
+        </div>
+        
+        <div class="metric-card">
+            <div class="metric-label">Last Updated</div>
+            <div class="metric-value" id="last-update" style="font-size: 1.5em;">--:--</div>
+            <div class="metric-subtitle">auto-refreshes every 30s</div>
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT -->
+    <div class="content-wrapper">
+        <!-- LEFT: Issues List -->
+        <section class="section-card">
+            <h2 class="section-title">Recent Enrollments</h2>
+            <div id="issues-list" class="issues-container">
+                <div class="loading">
+                    <div class="loading-spinner"></div>
+                    <p>Loading enrollment data from GitHub...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- RIGHT: Quick Stats -->
+        <aside class="quick-stats">
+            <div class="stat-box">
+                <h3>This Hour</h3>
+                <div class="big-number" id="this-hour-count">0</div>
+            </div>
+            
+            <div class="stat-box rust">
+                <h3>Peak Hour</h3>
+                <div class="big-number" id="peak-hour-count">0</div>
+            </div>
+            
+            <div class="stat-box lime">
+                <h3>Open Issues</h3>
+                <div class="big-number" id="open-issues-count">0</div>
+            </div>
+            
+            <div class="section-card" style="padding: 20px;">
+                <h3 style="margin-bottom: 15px; color: var(--daa-blue); font-family: var(--font-display);">Signups by Hour</h3>
+                <div class="hourly-chart" id="hourly-chart">
+                    <!-- Dynamically populated -->
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- FOOTER / QUICK LINKS -->
+    <footer class="footer">
+        <div class="quick-links">
+            <a href="https://github.com/smit4786/DetroitAutomationAcademy/issues/new?template=enrollment-inquiry.md" target="_blank" class="quick-link-btn">
+                🔗 Enrollment Form (QR)
+            </a>
+            <a href="https://github.com/smit4786/DetroitAutomationAcademy/issues?q=is%3Aissue+label%3Aenrollment" target="_blank" class="quick-link-btn secondary">
+                📋 View All Issues
+            </a>
+            <a href="https://raw.githubusercontent.com/smit4786/DetroitAutomationAcademy/main/qr_codes/enrollment_qr_poster_500px.png" target="_blank" class="quick-link-btn secondary">
+                📱 QR Code Image
+            </a>
+        </div>
+        <div class="refresh-info">
+            <span class="refresh-indicator"></span>
+            Auto-refreshing every 30 seconds
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // ========================================
+        // CONFIGURATION
+        // ========================================
+        const GITHUB_CONFIG = {
+            owner: 'smit4786',
+            repo: 'DetroitAutomationAcademy',
+            label: 'enrollment',
+            apiBase: 'https://api.github.com',
+            refreshInterval: 30000 // 30 seconds
+        };
+
+        // ========================================
+        // STATE MANAGEMENT
+        // ========================================
+        let currentIssues = [];
+        let lastFetchTime = null;
+        let hourlyData = {};
+
+        // ========================================
+        // GITHUB API FUNCTIONS
+        // ========================================
+        async function fetchEnrollmentIssues() {
+            try {
+                // Search for issues with [ENROLLMENT] in title (more reliable than label filter)
+                const url = `${GITHUB_CONFIG.apiBase}/search/issues?q=repo:${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}+%5BENROLLMENT%5D+type:issue&sort=created&order=desc&per_page=100`;
+                
+                const response = await fetch(url, {
+                    headers: {
+                        'Accept': 'application/vnd.github.v3+json',
+                        // Note: For public repos, no auth needed. For private repos or higher rate limits, add:
+                        // 'Authorization': 'token YOUR_GITHUB_TOKEN'
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error(`GitHub API error: ${response.status} ${response.statusText}`);
+                }
+
+                const data = await response.json();
+                currentIssues = data.items || [];
+                lastFetchTime = new Date();
+                
+                updateDashboard();
+                
+            } catch (error) {
+                console.error('Error fetching issues:', error);
+                displayError(error.message);
+            }
+        }
+
+        // ========================================
+        // DASHBOARD UPDATE FUNCTIONS
+        // ========================================
+        function updateDashboard() {
+            updateMetrics();
+            updateIssuesList();
+            updateHourlyChart();
+            updateLastUpdateTime();
+        }
+
+        function updateMetrics() {
+            const totalSignups = currentIssues.length;
+            const openIssues = currentIssues.filter(issue => issue.state === 'open').length;
+            
+            // Estimate QR scans (assume 70% scan rate, 30% completion)
+            const estimatedScans = Math.round(totalSignups / 0.3);
+            const conversionRate = totalSignups > 0 ? Math.round((totalSignups / estimatedScans) * 100) : 0;
+            
+            // Update DOM
+            document.getElementById('total-signups').textContent = totalSignups;
+            document.getElementById('qr-scans').textContent = estimatedScans;
+            document.getElementById('conversion-rate').textContent = `${conversionRate}%`;
+            document.getElementById('open-issues-count').textContent = openIssues;
+            
+            // Calculate this hour count
+            const now = new Date();
+            const oneHourAgo = new Date(now.getTime() - 60 * 60 * 1000);
+            const thisHourCount = currentIssues.filter(issue => {
+                const issueDate = new Date(issue.created_at);
+                return issueDate >= oneHourAgo;
+            }).length;
+            
+            document.getElementById('this-hour-count').textContent = thisHourCount;
+        }
+
+        function updateIssuesList() {
+            const container = document.getElementById('issues-list');
+            
+            if (currentIssues.length === 0) {
+                container.innerHTML = `
+                    <div class="no-data">
+                        <p>No enrollment submissions yet.</p>
+                        <p style="margin-top: 10px;">Students will see their submissions appear here in real-time!</p>
+                    </div>
+                `;
+                return;
+            }
+
+            // Sort by created date (newest first)
+            const sortedIssues = [...currentIssues].sort((a, b) => 
+                new Date(b.created_at) - new Date(a.created_at)
+            );
+
+            // Generate HTML
+            container.innerHTML = sortedIssues.map(issue => {
+                const createdDate = new Date(issue.created_at);
+                const isNew = (Date.now() - createdDate.getTime()) < 120000; // Less than 2 minutes old
+                const timeAgo = getTimeAgo(createdDate);
+                
+                return `
+                    <div class="issue-item ${isNew ? 'new' : ''}">
+                        <div class="issue-header">
+                            <div class="issue-title">${escapeHtml(issue.title)}</div>
+                            <div class="issue-number">#${issue.number}</div>
+                        </div>
+                        <div class="issue-meta">
+                            <span class="issue-time">${timeAgo}</span>
+                            <div class="issue-labels">
+                                ${issue.labels.map(label => 
+                                    `<span class="label-badge" style="background-color: #${label.color}">${escapeHtml(label.name)}</span>`
+                                ).join('')}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function updateHourlyChart() {
+            // Calculate hourly breakdown
+            const hourCounts = {};
+            const now = new Date();
+            const eventStart = new Date(now);
+            eventStart.setHours(10, 0, 0, 0); // Event starts at 10 AM
+            
+            // Initialize hours (10 AM, 11 AM, 12 PM)
+            for (let i = 10; i <= 13; i++) {
+                const hourKey = `${i}:00`;
+                hourCounts[hourKey] = 0;
+            }
+            
+            // Count issues by hour
+            currentIssues.forEach(issue => {
+                const issueDate = new Date(issue.created_at);
+                const hour = issueDate.getHours();
+                const hourKey = `${hour}:00`;
+                if (hourCounts.hasOwnProperty(hourKey)) {
+                    hourCounts[hourKey]++;
+                }
+            });
+            
+            // Find peak
+            const maxCount = Math.max(...Object.values(hourCounts), 1);
+            document.getElementById('peak-hour-count').textContent = maxCount;
+            
+            // Generate chart
+            const chartHtml = Object.entries(hourCounts).map(([hour, count]) => {
+                const percentage = (count / Math.max(maxCount, 1)) * 100;
+                return `
+                    <div class="hour-bar">
+                        <div class="hour-label">${hour}</div>
+                        <div class="bar-container">
+                            <div class="bar-fill" style="width: ${percentage}%">
+                                ${count > 0 ? count : ''}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            
+            document.getElementById('hourly-chart').innerHTML = chartHtml;
+        }
+
+        function updateLastUpdateTime() {
+            if (lastFetchTime) {
+                const timeString = lastFetchTime.toLocaleTimeString('en-US', { 
+                    hour: '2-digit', 
+                    minute: '2-digit',
+                    second: '2-digit'
+                });
+                document.getElementById('last-update').textContent = timeString;
+            }
+        }
+
+        // ========================================
+        // UTILITY FUNCTIONS
+        // ========================================
+        function getTimeAgo(date) {
+            const seconds = Math.floor((Date.now() - date.getTime()) / 1000);
+            
+            if (seconds < 60) return `${seconds}s ago`;
+            if (seconds < 3600) return `${Math.floor(seconds / 60)}m ago`;
+            if (seconds < 86400) return `${Math.floor(seconds / 3600)}h ago`;
+            return date.toLocaleDateString();
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function displayError(message) {
+            const container = document.getElementById('issues-list');
+            container.innerHTML = `
+                <div class="error-message">
+                    <strong>⚠️ Error loading data:</strong><br>
+                    ${escapeHtml(message)}
+                    <br><br>
+                    <small>Check your internet connection or GitHub API status. Dashboard will retry in 30 seconds.</small>
+                </div>
+            `;
+        }
+
+        // ========================================
+        // INITIALIZATION
+        // ========================================
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initial fetch
+            fetchEnrollmentIssues();
+            
+            // Set up auto-refresh
+            setInterval(fetchEnrollmentIssues, GITHUB_CONFIG.refreshInterval);
+            
+            console.log('🚀 BGC Event Status Dashboard initialized');
+            console.log(`📊 Monitoring: ${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}`);
+            console.log(`🏷️  Label filter: ${GITHUB_CONFIG.label}`);
+            console.log(`🔄 Auto-refresh: every ${GITHUB_CONFIG.refreshInterval / 1000}s`);
+        });
+
+        // ========================================
+        // KEYBOARD SHORTCUTS (for staff)
+        // ========================================
+        document.addEventListener('keydown', (e) => {
+            // Press 'R' to manually refresh
+            if (e.key === 'r' || e.key === 'R') {
+                console.log('🔄 Manual refresh triggered');
+                fetchEnrollmentIssues();
+            }
+            
+            // Press 'F' for fullscreen
+            if (e.key === 'f' || e.key === 'F') {
+                if (!document.fullscreenElement) {
+                    document.documentElement.requestFullscreen();
+                } else {
+                    document.exitFullscreen();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
