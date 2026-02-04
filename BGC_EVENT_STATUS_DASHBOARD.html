@@ -567,7 +567,7 @@
             text-align: center;
             box-shadow: 0 8px 30px rgba(0, 102, 204, 0.4);
             margin: 30px auto;
-            max-width: 400px;
+            max-width: 460px;
             border: 3px solid var(--daa-rust);
             position: relative;
             overflow: hidden;
@@ -591,7 +591,7 @@
             background: var(--daa-surface);
             border: 1px solid var(--daa-border);
             border-radius: 16px;
-            padding: 24px;
+            padding: 18px;
             box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
             backdrop-filter: blur(12px);
         }
@@ -599,26 +599,26 @@
         .ai-impact-title {
             font-family: var(--font-display);
             color: var(--daa-blue);
-            font-size: 1.3em;
+            font-size: 1.15em;
             margin-bottom: 6px;
         }
 
         .ai-impact-subtitle {
             color: var(--daa-text-muted);
-            font-size: 0.95em;
-            margin-bottom: 18px;
+            font-size: 0.85em;
+            margin-bottom: 12px;
         }
 
         .impact-metrics {
             display: grid;
-            gap: 12px;
+            gap: 8px;
         }
 
         .impact-metric {
             display: flex;
             justify-content: space-between;
             align-items: baseline;
-            padding: 10px 12px;
+            padding: 8px 10px;
             border-radius: 10px;
             background: rgba(15, 23, 42, 0.6);
             border: 1px solid rgba(148, 163, 184, 0.2);
@@ -626,7 +626,7 @@
 
         .impact-label {
             color: var(--daa-text-muted);
-            font-size: 0.85em;
+            font-size: 0.78em;
             text-transform: uppercase;
             letter-spacing: 0.08em;
             font-weight: 600;
@@ -634,8 +634,40 @@
 
         .impact-value {
             font-family: var(--font-display);
-            font-size: 1.4em;
+            font-size: 1.2em;
             color: var(--daa-white);
+        }
+
+        .impact-examples {
+            margin-top: 12px;
+            padding: 10px 12px;
+            border-radius: 10px;
+            background: rgba(17, 24, 39, 0.6);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            color: var(--daa-text-muted);
+            font-size: 0.82em;
+        }
+
+        .impact-examples strong {
+            color: var(--daa-white);
+            font-weight: 600;
+            display: block;
+            margin-bottom: 6px;
+            font-size: 0.9em;
+        }
+
+        .impact-examples ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            gap: 4px;
+        }
+
+        .impact-examples li::before {
+            content: '•';
+            color: var(--daa-lime);
+            margin-right: 6px;
         }
 
         .qr-code-section::after {
@@ -683,8 +715,8 @@
         }
         
         .qr-code-display img {
-            width: 280px;
-            height: 280px;
+            width: 320px;
+            height: 320px;
             display: block;
             border-radius: 5px;
         }
@@ -894,6 +926,15 @@
                     <span class="impact-label">Lines Added</span>
                     <span class="impact-value" id="ai-lines">35,104</span>
                 </div>
+            </div>
+            <div class="impact-examples">
+                <strong>Content examples from repo</strong>
+                <ul>
+                    <li>Live dashboard UI: docs/index.html</li>
+                    <li>Local event dashboard: BGC_EVENT_STATUS_DASHBOARD.html</li>
+                    <li>Calendar automation: deploy_calendar_invites.py</li>
+                    <li>Monitoring tooling: event_status_monitor.py</li>
+                </ul>
             </div>
         </div>
     </section>
