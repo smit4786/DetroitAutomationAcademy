@@ -675,6 +675,33 @@
             color: var(--daa-lime);
         }
 
+        .repo-highlight {
+            padding: 10px 12px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, rgba(0, 102, 204, 0.25), rgba(102, 204, 0, 0.18));
+            border: 1px solid rgba(102, 204, 0, 0.35);
+            display: grid;
+            gap: 8px;
+        }
+
+        .repo-highlight a {
+            font-size: 0.95em;
+            letter-spacing: 0.02em;
+        }
+
+        .repo-preview {
+            display: grid;
+            gap: 4px;
+            font-size: 0.78em;
+            color: var(--daa-text-muted);
+        }
+
+        .repo-preview span::before {
+            content: '↳';
+            color: var(--daa-lime);
+            margin-right: 6px;
+        }
+
         .impact-examples li::before {
             content: '•';
             color: var(--daa-lime);
@@ -945,7 +972,14 @@
                     <li>Local event dashboard: BGC_EVENT_STATUS_DASHBOARD.html</li>
                     <li>Calendar automation: deploy_calendar_invites.py</li>
                     <li>Monitoring tooling: event_status_monitor.py</li>
-                    <li><a href="https://github.com/smit4786/DetroitAutomationAcademy" target="_blank" rel="noopener">Course content repository</a></li>
+                    <li class="repo-highlight">
+                        <a href="https://github.com/smit4786/DetroitAutomationAcademy" target="_blank" rel="noopener">Course content repository</a>
+                        <div class="repo-preview">
+                            <span>Course ops: docs/quick_start.md, docs/phase1_guide.md</span>
+                            <span>Instructional assets: instructor_resources/zone_scripts</span>
+                            <span>Project materials: branding/, phase1/, scripts/</span>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>
