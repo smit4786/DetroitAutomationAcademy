@@ -143,3 +143,73 @@ dmypy.json
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# =============================================================================
+# SECURITY: SENSITIVE CREDENTIALS AND CONFIGURATION
+# =============================================================================
+# ⚠️  CRITICAL: These files contain sensitive data and must NEVER be committed
+
+# Environment variables (contains sensitive configuration)
+.env
+.env.local
+.env.*.local
+
+# Google API credentials and tokens
+credentials.json
+token.pickle
+token.json
+service-account*.json
+*-credentials.json
+
+# SSH keys and certificates
+*.pem
+*.key
+*.cert
+*.p12
+*.pfx
+
+# API keys and secrets
+*_secret.*
+*-secret.*
+*.secret
+.secrets/
+
+# Temporary sensitive files
+*.backup
+*.bak.sensitive
+*_INTERNAL.md.unredacted
+
+# Sensitive documents containing emails/phone numbers (moved to ~/DetroitAutomationAcademy_sensitive)
+SYNC_EVENT_TO_GOOGLE_CALENDAR.md
+CALENDAR_IMPORT_SUMMARY.md
+EVENT_DAY_DASHBOARD_README.md
+CALENDAR_EVENT_QUICK_REF.md
+AGENT_TEMPLATE_REVIEW.md
+STAFF_NOTIFICATION_BGC_DAY2.md
+BGC_EVENT_CALENDAR_INVITE.ics
+CALENDAR_IMPORT_QUICK_REF.txt
+EVENT_PREP_SUMMARY.md
+BGC_EVENT_DAY2_SUMMARY.md
+BGC_EVENT_STATUS_DASHBOARD_INDEX.md
+BGC_CALENDAR_EVENT_CREATED.md
+BGC_EVENT_READY_CALENDAR.ics
+GRANT_TRACKING_FRAMEWORK.md
+.github/ISSUE_TEMPLATE/enrollment-inquiry.md
+BGC_EVENT_FINAL_PREP.md
+CALENDAR_IMPORT_REPORT.sh
+BGC_EVENT_DASHBOARD_INTEGRATION.md
+TEMPLATE_ENROLLMENT_FORM.md.bak
+BGC_EVENT_STATUS_DASHBOARD.md
+DASHBOARD_PACKAGE_SUMMARY.txt
+ISSUE_TEMPLATE/enrollment-inquiry.md
+GRANT_TRACKING_FRAMEWORK.md.bak
+CALENDAR_DEPLOYMENT_SUMMARY.md
+CALENDAR_IMPORT_STATUS.txt
+CALENDAR_INVITE_EMAIL_TEMPLATES.md
+BGC_CALENDAR_EVENT_CONFIRMED.md
+STAFF_EVENT_NOTIFICATION.md
+BGC_EVENT_DAY2_CALENDAR.ics
+
+# =============================================================================
+# END SECURITY SECTION
+# =============================================================================
