@@ -13,10 +13,18 @@
             --daa-blue: #0066CC;           /* Electric Blue / Tech Blue */
             --daa-rust: #CC5522;           /* Rust / Detroit Burn */
             --daa-lime: #66CC00;           /* Lime / Forward Motion */
-            --daa-black: #111111;          /* Warm Black */
-            --daa-gray-dark: #666666;      /* Medium Gray */
-            --daa-gray-light: #F5F5F5;     /* Light Gray */
-            --daa-white: #FFFFFF;          /* White */
+            --daa-black: #0B0F16;          /* Deep Charcoal */
+            --daa-gray-dark: #9AA4B2;      /* Muted Gray */
+            --daa-gray-light: #141B26;     /* Dark Surface */
+            --daa-white: #F5F7FB;          /* Soft White */
+
+            /* Dark Theme Surfaces */
+            --daa-bg: #0A0F18;
+            --daa-surface: #111827;
+            --daa-surface-elevated: #162236;
+            --daa-border: rgba(148, 163, 184, 0.2);
+            --daa-text: #F5F7FB;
+            --daa-text-muted: #A7B0BD;
             
             /* Status Colors */
             --status-success: #66CC00;
@@ -39,8 +47,10 @@
         
         body {
             font-family: var(--font-body);
-            background: linear-gradient(135deg, var(--daa-gray-light) 0%, var(--daa-white) 100%);
-            color: var(--daa-black);
+            background: radial-gradient(1200px 600px at 10% -10%, rgba(0, 102, 204, 0.25) 0%, rgba(10, 15, 24, 0.95) 55%),
+                        radial-gradient(900px 500px at 90% -20%, rgba(204, 85, 34, 0.18) 0%, rgba(10, 15, 24, 0.9) 60%),
+                        var(--daa-bg);
+            color: var(--daa-text);
             padding: 20px;
             min-height: 100vh;
             overflow-x: hidden;
@@ -50,12 +60,14 @@
            HEADER SECTION
            ======================================== */
         .header {
-            background: linear-gradient(135deg, var(--daa-blue) 0%, #0052A3 100%);
+            background: linear-gradient(135deg, rgba(0, 102, 204, 0.28) 0%, rgba(0, 82, 163, 0.65) 100%);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(148, 163, 184, 0.25);
             color: var(--daa-white);
             padding: 30px 40px;
             border-radius: 20px;
             margin-bottom: 30px;
-            box-shadow: 0 10px 40px rgba(0, 102, 204, 0.3);
+            box-shadow: 0 18px 50px rgba(0, 0, 0, 0.4);
             position: relative;
             overflow: hidden;
         }
@@ -70,6 +82,17 @@
             background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             z-index: 0;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(600px 260px at 12% 10%, rgba(102, 204, 0, 0.22), transparent 60%),
+                        radial-gradient(460px 200px at 85% 0%, rgba(204, 85, 34, 0.25), transparent 55%);
+            opacity: 0.9;
+            z-index: 0;
+            pointer-events: none;
         }
         
         .header-content {
@@ -161,12 +184,24 @@
         }
         
         .metric-card {
-            background: var(--daa-white);
+            background: var(--daa-surface);
             padding: 25px;
             border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
             border-left: 5px solid var(--daa-blue);
+            border: 1px solid var(--daa-border);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .metric-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(140deg, rgba(255, 255, 255, 0.05), transparent 45%);
+            opacity: 0.6;
+            pointer-events: none;
         }
         
         .metric-card:hover {
@@ -176,7 +211,7 @@
         
         .metric-card.highlight {
             border-left-color: var(--daa-rust);
-            background: linear-gradient(135deg, var(--daa-white) 0%, #FFF5F0 100%);
+            background: linear-gradient(135deg, rgba(204, 85, 34, 0.15) 0%, rgba(17, 24, 39, 0.9) 100%);
         }
         
         .metric-card.success {
@@ -185,7 +220,7 @@
         
         .metric-label {
             font-size: 0.9em;
-            color: var(--daa-gray-dark);
+            color: var(--daa-text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin-bottom: 10px;
@@ -211,7 +246,7 @@
         
         .metric-subtitle {
             font-size: 0.85em;
-            color: var(--daa-gray-dark);
+            color: var(--daa-text-muted);
             font-style: italic;
         }
         
@@ -243,10 +278,12 @@
         }
         
         .section-card {
-            background: var(--daa-white);
+            background: var(--daa-surface);
             padding: 30px;
             border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+            border: 1px solid var(--daa-border);
+            backdrop-filter: blur(10px);
         }
         
         .section-title {
@@ -272,6 +309,15 @@
             overflow-y: auto;
             padding-right: 10px;
         }
+
+        .issues-container::before {
+            content: '';
+            position: sticky;
+            top: 0;
+            display: block;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(102, 204, 0, 0.5), transparent);
+        }
         
         .issues-container::-webkit-scrollbar {
             width: 8px;
@@ -288,7 +334,7 @@
         }
         
         .issue-item {
-            background: var(--daa-gray-light);
+            background: var(--daa-surface-elevated);
             padding: 15px;
             border-radius: 10px;
             margin-bottom: 12px;
@@ -309,13 +355,13 @@
         }
         
         .issue-item:hover {
-            background: #E8F4FF;
+            background: rgba(0, 102, 204, 0.2);
             transform: translateX(5px);
         }
         
         .issue-item.new {
             border-left-color: var(--daa-lime);
-            background: #F0FFF0;
+            background: rgba(102, 204, 0, 0.15);
             animation: pulse 2s ease infinite;
         }
         
@@ -337,15 +383,15 @@
         
         .issue-title {
             font-weight: 700;
-            color: var(--daa-black);
+            color: var(--daa-text);
             font-size: 1.05em;
             flex: 1;
         }
         
         .issue-number {
             font-size: 0.85em;
-            color: var(--daa-gray-dark);
-            background: var(--daa-white);
+            color: var(--daa-text-muted);
+            background: rgba(15, 23, 42, 0.7);
             padding: 4px 8px;
             border-radius: 5px;
             margin-left: 10px;
@@ -353,7 +399,7 @@
         
         .issue-meta {
             font-size: 0.85em;
-            color: var(--daa-gray-dark);
+            color: var(--daa-text-muted);
             display: flex;
             gap: 15px;
             flex-wrap: wrap;
@@ -447,7 +493,7 @@
         .bar-container {
             flex: 1;
             height: 30px;
-            background: var(--daa-gray-light);
+            background: rgba(15, 23, 42, 0.7);
             border-radius: 5px;
             overflow: hidden;
             position: relative;
@@ -470,15 +516,17 @@
            FOOTER / QUICK LINKS
            ======================================== */
         .footer {
-            background: var(--daa-white);
+            background: var(--daa-surface);
             padding: 25px 40px;
             border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
             gap: 20px;
+            border: 1px solid var(--daa-border);
+            backdrop-filter: blur(12px);
         }
         
         .quick-links {
@@ -521,6 +569,17 @@
             margin: 30px auto;
             max-width: 400px;
             border: 3px solid var(--daa-rust);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .qr-code-section::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(260px 160px at 20% 0%, rgba(255, 255, 255, 0.25), transparent 60%);
+            opacity: 0.8;
+            pointer-events: none;
         }
         
         .qr-code-section h2 {
@@ -573,7 +632,7 @@
         
         .refresh-info {
             font-size: 0.9em;
-            color: var(--daa-gray-dark);
+            color: var(--daa-text-muted);
         }
         
         .refresh-indicator {
@@ -597,7 +656,7 @@
         .loading {
             text-align: center;
             padding: 40px;
-            color: var(--daa-gray-dark);
+            color: var(--daa-text-muted);
         }
         
         .loading-spinner {
@@ -627,7 +686,7 @@
         .no-data {
             text-align: center;
             padding: 40px;
-            color: var(--daa-gray-dark);
+            color: var(--daa-text-muted);
             font-size: 1.1em;
         }
         
@@ -663,9 +722,43 @@
                 text-align: center;
             }
         }
+
+        .watermark {
+            position: fixed;
+            right: -80px;
+            bottom: -120px;
+            width: 420px;
+            height: 420px;
+            opacity: 0.08;
+            transform: rotate(-8deg);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .watermark .circuit {
+            stroke: rgba(255, 255, 255, 0.7);
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .watermark .node {
+            fill: rgba(255, 255, 255, 0.7);
+        }
     </style>
 </head>
 <body>
+    <div class="watermark" aria-hidden="true">
+        <svg viewBox="0 0 160 160" role="img" aria-label="Detroit Circuit watermark">
+            <path class="circuit" d="M20 120V70L40 55V120M40 120V40L60 30V120M60 120V80L80 65V120M80 120V35L100 25V120M100 120V85L130 65V120" />
+            <path class="circuit" d="M20 120H130" />
+            <circle class="node" cx="20" cy="120" r="3" />
+            <circle class="node" cx="40" cy="120" r="3" />
+            <circle class="node" cx="60" cy="120" r="3" />
+            <circle class="node" cx="80" cy="120" r="3" />
+            <circle class="node" cx="100" cy="120" r="3" />
+            <circle class="node" cx="130" cy="120" r="3" />
+        </svg>
+    </div>
     <!-- HEADER -->
     <header class="header">
         <div class="header-content">
