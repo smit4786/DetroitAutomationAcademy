@@ -573,6 +573,71 @@
             overflow: hidden;
         }
 
+        .qr-impact-grid {
+            display: grid;
+            grid-template-columns: minmax(280px, 420px) minmax(260px, 1fr);
+            gap: 24px;
+            align-items: stretch;
+            margin: 30px 0 10px;
+        }
+
+        @media (max-width: 980px) {
+            .qr-impact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .ai-impact-card {
+            background: var(--daa-surface);
+            border: 1px solid var(--daa-border);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+            backdrop-filter: blur(12px);
+        }
+
+        .ai-impact-title {
+            font-family: var(--font-display);
+            color: var(--daa-blue);
+            font-size: 1.3em;
+            margin-bottom: 6px;
+        }
+
+        .ai-impact-subtitle {
+            color: var(--daa-text-muted);
+            font-size: 0.95em;
+            margin-bottom: 18px;
+        }
+
+        .impact-metrics {
+            display: grid;
+            gap: 12px;
+        }
+
+        .impact-metric {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 10px 12px;
+            border-radius: 10px;
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+        }
+
+        .impact-label {
+            color: var(--daa-text-muted);
+            font-size: 0.85em;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 600;
+        }
+
+        .impact-value {
+            font-family: var(--font-display);
+            font-size: 1.4em;
+            color: var(--daa-white);
+        }
+
         .qr-code-section::after {
             content: '';
             position: absolute;
@@ -788,14 +853,35 @@
         </div>
     </header>
 
-    <!-- PROMINENT QR CODE SECTION -->
-    <section class="qr-code-section">
-        <h2>📱 Scan to Enroll</h2>
-        <p>Point your camera at the QR code below</p>
-        <div class="qr-code-display">
-            <img src="qr_codes/enrollment_qr_poster_500px.png" alt="QR Code - Scan to Enroll in Detroit Automation Academy" />
+    <!-- QR + AI IMPACT -->
+    <section class="qr-impact-grid">
+        <div class="qr-code-section">
+            <h2>📱 Scan to Enroll</h2>
+            <p>Point your camera at the QR code below</p>
+            <div class="qr-code-display">
+                <img src="qr_codes/enrollment_qr_poster_500px.png" alt="QR Code - Scan to Enroll in Detroit Automation Academy" />
+            </div>
+            <div class="scan-text">👆 Tap or scan with your phone</div>
         </div>
-        <div class="scan-text">👆 Tap or scan with your phone</div>
+
+        <div class="ai-impact-card">
+            <div class="ai-impact-title">AI Build Impact</div>
+            <div class="ai-impact-subtitle">Agent contributions powering DetroitAutomationAcademy</div>
+            <div class="impact-metrics">
+                <div class="impact-metric">
+                    <span class="impact-label">Agent Commits</span>
+                    <span class="impact-value" id="ai-commits">0</span>
+                </div>
+                <div class="impact-metric">
+                    <span class="impact-label">Files Shipped</span>
+                    <span class="impact-value" id="ai-files">0</span>
+                </div>
+                <div class="impact-metric">
+                    <span class="impact-label">Lines Added</span>
+                    <span class="impact-value" id="ai-lines">0</span>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- TOP METRICS -->
@@ -898,6 +984,12 @@
             resetUntilLocal: '2026-02-04T07:00:00-05:00' // Auto-reset until 7:00 AM EST
         };
 
+        const AI_IMPACT_METRICS = {
+            commits: 65,
+            files: 150,
+            lines: 35104
+        };
+
         // ========================================
         // STATE MANAGEMENT
         // ========================================
@@ -959,10 +1051,21 @@
         // DASHBOARD UPDATE FUNCTIONS
         // ========================================
         function updateDashboard() {
+            updateImpactMetrics();
             updateMetrics();
             updateIssuesList();
             updateHourlyChart();
             updateLastUpdateTime();
+        }
+
+        function updateImpactMetrics() {
+            const commitsEl = document.getElementById('ai-commits');
+            const filesEl = document.getElementById('ai-files');
+            const linesEl = document.getElementById('ai-lines');
+
+            if (commitsEl) commitsEl.textContent = AI_IMPACT_METRICS.commits;
+            if (filesEl) filesEl.textContent = AI_IMPACT_METRICS.files;
+            if (linesEl) linesEl.textContent = AI_IMPACT_METRICS.lines.toLocaleString();
         }
 
         function updateMetrics() {
