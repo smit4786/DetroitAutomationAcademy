@@ -670,6 +670,17 @@
             display: inline-block;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
+
+        .qr-link {
+            display: inline-block;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .qr-link:hover .qr-code-display {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.28);
+        }
         
         .qr-code-display img {
             width: 280px;
@@ -684,6 +695,7 @@
             margin-top: 20px;
             font-weight: 600;
             animation: pulse 2s infinite;
+            cursor: pointer;
         }
         
         @keyframes pulse {
@@ -858,10 +870,12 @@
         <div class="qr-code-section">
             <h2>📱 Scan to Enroll</h2>
             <p>Point your camera at the QR code below</p>
-            <div class="qr-code-display">
-                <img src="qr_codes/enrollment_qr_poster_500px.png" alt="QR Code - Scan to Enroll in Detroit Automation Academy" />
-            </div>
-            <div class="scan-text">👆 Tap or scan with your phone</div>
+            <a class="qr-link" href="https://github.com/smit4786/DetroitAutomationAcademy/issues/new?template=enrollment-inquiry.md" target="_blank" rel="noopener">
+                <div class="qr-code-display">
+                    <img src="qr_codes/enrollment_qr_poster_500px.png" alt="QR Code - Scan to Enroll in Detroit Automation Academy" />
+                </div>
+                <div class="scan-text">👆 Tap or scan with your phone</div>
+            </a>
         </div>
 
         <div class="ai-impact-card">
@@ -870,15 +884,15 @@
             <div class="impact-metrics">
                 <div class="impact-metric">
                     <span class="impact-label">Agent Commits</span>
-                    <span class="impact-value" id="ai-commits">0</span>
+                    <span class="impact-value" id="ai-commits">65</span>
                 </div>
                 <div class="impact-metric">
                     <span class="impact-label">Files Shipped</span>
-                    <span class="impact-value" id="ai-files">0</span>
+                    <span class="impact-value" id="ai-files">150</span>
                 </div>
                 <div class="impact-metric">
                     <span class="impact-label">Lines Added</span>
-                    <span class="impact-value" id="ai-lines">0</span>
+                    <span class="impact-value" id="ai-lines">35,104</span>
                 </div>
             </div>
         </div>
