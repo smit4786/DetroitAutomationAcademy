@@ -1,0 +1,3 @@
+# event_status_monitor.py (moved to dashboard/)
+# Privacy: participant data is anonymized; no names/emails in dashboard output
+# ...existing code...

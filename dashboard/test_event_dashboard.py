@@ -1,0 +1,3 @@
+# test_event_dashboard.py (moved to dashboard/)
+# Tests tile layout, privacy, and anonymized participant data
+# ...existing code...

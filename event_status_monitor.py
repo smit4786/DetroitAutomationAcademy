@@ -162,8 +162,9 @@ class EnrollmentParser:
             Dictionary of parsed enrollment data
         """
         data = {
-            "name": None,
-            "email": None,
+            # Privacy: Do not store/display full name or email in dashboard output
+            "name": None,  # Only used for admin review, not display
+            "email": None, # Only used for admin review, not display
             "phone": None,
             "programs": [],
             "education": None,
@@ -211,10 +212,11 @@ class EnrollmentParser:
                 continue
             
             # Parse data based on current section
+            # Privacy: Do not display name/email in dashboard output
             if current_section == "name" and not line.startswith("#"):
-                data["name"] = line
+                data["name"] = None  # Mask name for privacy
             elif current_section == "email" and not line.startswith("#"):
-                data["email"] = line
+                data["email"] = None # Mask email for privacy
             elif current_section == "phone" and not line.startswith("#"):
                 data["phone"] = line
             elif current_section in ["programs", "education", "experience"]:
