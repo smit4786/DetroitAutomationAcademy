@@ -6,17 +6,6 @@
 
 ---
 
-## ✅ Save Point — February 4, 2026
-
-**Scope:** Event-day operations + enrollment flow stabilization
-
-- **Dashboard enrollment links:** Restored to `enrollment-inquiry` issue template
-- **Issue template:** `enrollment-inquiry.md` present under `.github/ISSUE_TEMPLATE`
-- **Event assets:** Created photo intake folder for carousel at `assets/event_photos_2026-02-04`
-- **Website SSL warning:** Root cause identified as external DNS security filter (OpenDNS) returning a block IP; allowlist required by external admin
-
----
-
 ## Executive Summary
 
 This session successfully executed two major priorities of the Detroit Automation Academy improvement roadmap:
