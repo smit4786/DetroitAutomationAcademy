@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instructor Resources - Detroit Automation Academy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            line-height: 1.6;
+            color: #222;
+            background: #f7f7fa;
+        }
+        
+        header {
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 24px;
+            color: #0066CC;
+        }
+        
+        .logo a {
+            color: #0066CC;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #222;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #0066CC;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #CC5522 0%, #A83F1A 100%);
+            color: white;
+            padding: 60px 32px;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            opacity: 0.95;
+        }
+        
+        .content {
+            max-width: 900px;
+            margin: 48px auto;
+            padding: 0 32px;
+        }
+        
+        .section {
+            background: white;
+            padding: 48px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            margin-bottom: 32px;
+        }
+        
+        .section h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: #CC5522;
+        }
+        
+        .section h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            margin-top: 24px;
+            margin-bottom: 12px;
+            color: #222;
+        }
+        
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 24px 0;
+        }
+        
+        .resource-card {
+            background: #f7f7fa;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #0066CC;
+            transition: all 0.3s;
+        }
+        
+        .resource-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+        
+        .resource-card h4 {
+            color: #0066CC;
+            margin-bottom: 8px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .resource-card p {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 12px;
+        }
+        
+        .resource-card a {
+            display: inline-block;
+            color: #0066CC;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 13px;
+            transition: color 0.3s;
+        }
+        
+        .resource-card a:hover {
+            color: #CC5522;
+        }
+        
+        .info-box {
+            background: #f7f7fa;
+            padding: 24px;
+            border-radius: 12px;
+            margin: 24px 0;
+            border-left: 4px solid #CC5522;
+        }
+        
+        .info-box h3 {
+            margin-bottom: 12px;
+            color: #222;
+        }
+        
+        .info-box p {
+            margin-bottom: 8px;
+            color: #666;
+        }
+        
+        .button {
+            display: inline-block;
+            background: linear-gradient(135deg, #0066CC 0%, #004A99 100%);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s;
+            margin-top: 12px;
+        }
+        
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,102,204,0.3);
+        }
+        
+        .button-secondary {
+            background: #CC5522;
+        }
+        
+        .button-secondary:hover {
+            background: #A83F1A;
+        }
+        
+        footer {
+            background: #222;
+            color: white;
+            padding: 32px;
+            text-align: center;
+            font-size: 14px;
+            margin-top: 64px;
+        }
+        
+        .footer-links {
+            margin-bottom: 16px;
+        }
+        
+        .footer-links a {
+            color: #66CC00;
+            text-decoration: none;
+            margin: 0 16px;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #52A300;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .section {
+                padding: 32px 16px;
+            }
+            
+            .resource-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo"><a href="landing.html">🚀 DAA</a></div>
+            <ul class="nav-links">
+                <li><a href="landing.html">Home</a></li>
+                <li><a href="students.html">For Students</a></li>
+                <li><a href="partners.html">For Partners</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Instructor Resources</h1>
+            <p>Complete curriculum, guides, and tools to deliver world-class automation education.</p>
+        </div>
+    </section>
+    
+    <section class="content">
+        <section class="section">
+            <h2>📚 Curriculum Guides</h2>
+            <p>Everything you need to teach each phase of the program:</p>
+            
+            <div class="resource-grid">
+                <div class="resource-card">
+                    <h4>Phase 1: GPIO & Electronics</h4>
+                    <p>Teaching Python, GPIO control, hardware fundamentals, and event-driven programming</p>
+                    <a href="phase1_guide.md">View Guide</a>
+                </div>
+                <div class="resource-card">
+                    <h4>Phase 2: CAD & Fabrication</h4>
+                    <p>Parametric design, 3D printing, laser cutting, and G-code generation</p>
+                    <a href="phase2_guide.md">View Guide</a>
+                </div>
+                <div class="resource-card">
+                    <h4>Phase 3: Autonomous Systems</h4>
+                    <p>Rover simulation, navigation algorithms, autonomous behavior, and debugging</p>
+                    <a href="phase3_guide.md">View Guide</a>
+                </div>
+                <div class="resource-card">
+                    <h4>API Reference</h4>
+                    <p>Complete documentation of all classes, functions, and modules</p>
+                    <a href="api_reference.md">View Reference</a>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2>🎯 Quick Start for Teachers</h2>
+            
+            <h3>1. Setup & Preparation</h3>
+            <ul style="margin-left: 20px; margin-bottom: 24px;">
+                <li>Read the <a href="quick_start.md">Quick Start guide</a> (15 minutes)</li>
+                <li>Install Python 3.8+ and required packages</li>
+                <li>Test GPIO examples with Raspberry Pi (or mock GPIO for dev)</li>
+                <li>Set up 3D printer and laser cutter access</li>
+            </ul>
+            
+            <h3>2. Teaching Approach</h3>
+            <div class="info-box">
+                <h3 style="margin-top: 0;">Hands-On + Pedagogical</h3>
+                <p><strong>Each phase combines:</strong></p>
+                <ul style="margin-left: 20px; margin-top: 12px;">
+                    <li><strong>Learning Objectives:</strong> Clear outcomes for each session</li>
+                    <li><strong>Live Coding:</strong> Demo + code-along for students</li>
+                    <li><strong>Debugging Challenges:</strong> Intentional bugs to debug (great teaching tool!)</li>
+                    <li><strong>Real Hardware:</strong> Hands-on work with actual robots and equipment</li>
+                    <li><strong>Projects:</strong> Build toward a final portfolio piece each phase</li>
+                </ul>
+            </div>
+            
+            <h3>3. Assessment & Grading</h3>
+            <p style="margin-bottom: 12px;">We use a portfolio-based approach:</p>
+            <ul style="margin-left: 20px; margin-bottom: 24px;">
+                <li><strong>Phase Completion:</strong> Successfully run all 3 phases (40%)</li>
+                <li><strong>Debugging Challenges:</strong> Solve intentional bugs correctly (30%)</li>
+                <li><strong>Final Project:</strong> Integrated project using all 3 phases (30%)</li>
+                <li><strong>Attendance:</strong> 10+ of 12 sessions required (prerequisite)</li>
+            </ul>
+        </section>
+        
+        <section class="section">
+            <h2>🛠️ Teaching Tools & Utilities</h2>
+            
+            <h3>Code Examples & Starter Templates</h3>
+            <div class="resource-grid">
+                <div class="resource-card">
+                    <h4>Phase 1 Examples</h4>
+                    <p>LED blink, button press, event detection patterns</p>
+                    <a href="https://github.com/smit4786/DetroitAutomationAcademy/tree/main/phase1" target="_blank">View Code</a>
+                </div>
+                <div class="resource-card">
+                    <h4>Phase 2 Examples</h4>
+                    <p>STL generation, CAD models, G-code for laser cutting</p>
+                    <a href="https://github.com/smit4786/DetroitAutomationAcademy/tree/main/phase2" target="_blank">View Code</a>
+                </div>
+                <div class="resource-card">
+                    <h4>Phase 3 Examples</h4>
+                    <p>Rover simulation, navigation, autonomous behavior</p>
+                    <a href="https://github.com/smit4786/DetroitAutomationAcademy/tree/main/phase3" target="_blank">View Code</a>
+                </div>
+                <div class="resource-card">
+                    <h4>Debugging Challenges</h4>
+                    <p>Intentional bugs for students to fix and learn from</p>
+                    <a href="https://github.com/smit4786/DetroitAutomationAcademy/blob/main/challenge_1_rover_debug.py" target="_blank">View Example</a>
+                </div>
+            </div>
+            
+            <h3 style="margin-top: 32px;">Hardware Setup & Configuration</h3>
+            <p style="margin-bottom: 12px;">For Raspberry Pi and peripheral setup:</p>
+            <ul style="margin-left: 20px; margin-bottom: 24px;">
+                <li><strong>GPIO Pin Reference:</strong> BCM vs BOARD numbering</li>
+                <li><strong>Hardware Abstraction:</strong> Mock GPIO for cross-platform development</li>
+                <li><strong>Sensor Calibration:</strong> Ultrasonic, distance, and environmental sensors</li>
+                <li><strong>Motor Control:</strong> PWM and speed regulation</li>
+            </ul>
+            
+            <a href="https://github.com/smit4786/DetroitAutomationAcademy" target="_blank" class="button">View Full Code Repository</a>
+        </section>
+        
+        <section class="section">
+            <h2>🎓 Supporting Materials</h2>
+            
+            <div class="info-box">
+                <h3>For Your Reference</h3>
+                <p><strong>Event Planning:</strong> See <a href="https://github.com/smit4786/DetroitAutomationAcademy/blob/main/ADMINISTRATIVE_COORDINATION_PLAN.md" target="_blank">ADMINISTRATIVE_COORDINATION_PLAN.md</a> for full event logistics</p>
+                <p><strong>Technical Roadmap:</strong> Check <a href="https://github.com/smit4786/DetroitAutomationAcademy/blob/main/CTO_TECHNICAL_ROADMAP.md" target="_blank">CTO_TECHNICAL_ROADMAP.md</a> for infrastructure and scaling plans</p>
+                <p><strong>Documentation Index:</strong> Browse <a href="https://github.com/smit4786/DetroitAutomationAcademy/blob/main/MASTER_DOCUMENT_INDEX.md" target="_blank">MASTER_DOCUMENT_INDEX.md</a> for all available guides</p>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2>❓ Instructor FAQ</h2>
+            
+            <h3>How much prep time do I need each week?</h3>
+            <p>Most instructors spend 1-2 hours prepping per session. Much of it is reviewing the phase guide and testing code examples. After teaching phase 1-2 times, it becomes faster!</p>
+            
+            <h3>What if a student gets stuck?</h3>
+            <p>Our debugging challenges are intentionally designed to teach problem-solving. Encourage students to:</p>
+            <ul style="margin-left: 20px;">
+                <li>Read error messages carefully</li>
+                <li>Use print statements to debug</li>
+                <li>Check hardware connections</li>
+                <li>Ask peers for help (collaborative learning)</li>
+            </ul>
+            
+            <h3>Can I customize the curriculum?</h3>
+            <p>Absolutely! The phases are structured, but you can:</p>
+            <ul style="margin-left: 20px;">
+                <li>Add additional challenges or projects</li>
+                <li>Adjust pacing to match your cohort's pace</li>
+                <li>Bring in guest speakers or industry partnerships</li>
+                <li>Share improvements back to the main project</li>
+            </ul>
+            
+            <h3>How do I report issues or suggest improvements?</h3>
+            <p>Open a GitHub issue or contact us at <strong>info@detroitautomationacademy.com</strong>. We actively incorporate teacher feedback!</p>
+        </section>
+        
+        <div style="text-align: center; padding: 32px; background: linear-gradient(135deg, #CC552215 0%, #0066CC15 100%); border-radius: 12px; margin-bottom: 48px;">
+            <h3 style="margin-bottom: 16px; color: #CC5522;">Ready to teach?</h3>
+            <p style="margin-bottom: 16px; color: #666;">Access all curriculum guides, code examples, and teaching materials in our GitHub repository.</p>
+            <a href="https://github.com/smit4786/DetroitAutomationAcademy" target="_blank" class="button button-secondary">Visit Repository</a>
+            <p style="margin-top: 16px; color: #666; font-size: 14px;">Questions? Email <strong>info@detroitautomationacademy.com</strong></p>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="footer-links">
+            <a href="landing.html">Home</a>
+            <a href="https://github.com/smit4786/DetroitAutomationAcademy" target="_blank">GitHub</a>
+            <a href="https://github.com/smit4786/DetroitAutomationAcademy/blob/main/MASTER_DOCUMENT_INDEX.md" target="_blank">Documentation</a>
+            <a href="mailto:info@detroitautomationacademy.com">Contact</a>
+        </div>
+        <p>&copy; 2026 Detroit Automation Academy. All rights reserved. | Automation skills for Detroit's future, built by Detroiters.</p>
+    </footer>
+</body>
+</html>
