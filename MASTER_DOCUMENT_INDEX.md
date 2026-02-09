@@ -1,5 +1,5 @@
 # 📚 DETROIT AUTOMATION ACADEMY - MASTER DOCUMENT INDEX
-**February 1, 2025** | **Status: ✅ ALL SYSTEMS READY FOR LAUNCH**
+**February 9, 2026** | **Status: ✅ ALL SYSTEMS READY FOR LAUNCH**
 
 ---
 
@@ -94,27 +94,39 @@
 **Your goal:** Implement 30-day sprint and infrastructure improvements
 
 **Primary documents:**
-1. **CTO_TECHNICAL_ASSESSMENT.md** (39KB) - ⭐ **TECHNICAL DEEP DIVE**
+1. **DEPLOYMENT_GUIDE.md** (12KB) - ⭐ **WEBSITE DEPLOYMENT**
+   - GitHub Pages setup and configuration
+   - Step-by-step push instructions
+   - Privacy & security checklist
+   - Troubleshooting guide
+
+2. **DEV_ENVIRONMENT_SETUP.md** (14KB) - ⭐ **LOCAL SETUP**
+   - Git configuration with privacy protection
+   - Python environment setup (venv/conda)
+   - Pre-commit hooks installation
+   - Development workflow
+
+3. **CTO_TECHNICAL_ASSESSMENT.md** (39KB) - **TECHNICAL DEEP DIVE**
    - Architecture rating: 8.2/10
    - Detailed analysis of all 3 phases
    - Performance benchmarks and scalability analysis
    - Technical debt prioritization
    - Integration roadmap for Phase 4-7
 
-2. **CTO_TECHNICAL_ROADMAP.md** (34KB)
+4. **CTO_TECHNICAL_ROADMAP.md** (34KB)
    - 30/60/90-day implementation plan
    - Sprint breakdown with task assignments
    - Budget allocation per sprint
    - KPI tracking matrix
    - Risk mitigation strategies
 
-3. **CTO_EXECUTIVE_SUMMARY.md** (7KB)
+5. **CTO_EXECUTIVE_SUMMARY.md** (7KB)
    - Quick assessment matrix
    - Critical issues summary
    - Immediate actions (this week)
    - Success metrics (90-day targets)
 
-4. **IMPROVEMENTS.md** (15KB)
+6. **IMPROVEMENTS.md** (15KB)
    - Comprehensive roadmap of planned enhancements
    - Priority levels and time estimates
    - Technical and educational improvements
@@ -178,6 +190,7 @@
 | **CTO_TECHNICAL_ASSESSMENT.md** | 39KB | Deep technical analysis | Chief Technology Officer | Development Team |
 | **CTO_TECHNICAL_ROADMAP.md** | 34KB | 30/60/90-day sprint plans | Chief Technology Officer | Development Team |
 | **ADMIN_COORDINATION_SUMMARY.md** | 15KB | Launch readiness assessment | Administrative Assistant | Leadership, Admin Staff |
+| **docs/BGC_EVENT_STATUS_DASHBOARD.html** | 8KB | Public event dashboard (GitHub Pages) | Admin, Dev Team | All Stakeholders |
 | **ADMINISTRATIVE_COORDINATION_PLAN.md** | 28KB | Comprehensive coordination details | Administrative Assistant | All Staff |
 | **COORDINATION_INDEX.md** | 14KB | Navigation hub for admin docs | Administrative Assistant | Admin Staff |
 
@@ -185,17 +198,19 @@
 
 ---
 
-### 📅 OPERATIONAL DOCUMENTS (Feb 1, 2025)
+### 📅 OPERATIONAL & DEPLOYMENT DOCUMENTS (Feb 1-9, 2025)
 
 | Document | Size | Purpose | Audience |
 |----------|------|---------|----------|
+| **DEPLOYMENT_GUIDE.md** | 12KB | GitHub Pages deployment steps | Dev Team, Technical Staff |
+| **DEV_ENVIRONMENT_SETUP.md** | 14KB | Local development environment | Developers, DevOps |
 | **QUICK_REFERENCE_LAUNCH.md** | 12KB | Daily coordination reference | Admin, Leadership |
 | **CALENDAR_FEB_MAR_2025.md** | 13KB | Daily action items & schedule | All Staff, Instructors |
 | **TEMPLATE_ENROLLMENT_FORM.md** | 8KB | Student application form | Students, Parents |
 | **TEMPLATE_EVENT_CHECKLIST.md** | 12KB | B&G Club event execution | Event Staff, Instructors |
 | **TEMPLATE_MEETING_AGENDA.md** | 17KB | Feb 5 leadership meeting | Leadership, Admin |
 
-**Total:** 62KB of operational execution materials
+**Total:** 88KB of operational, deployment, and execution materials
 
 ---
 
@@ -387,6 +402,7 @@ DetroitAutomationAcademy/
     ├── api_reference.md
     ├── token_design_concepts.md
     ├── bgc_event_guide.md
+   ├── BGC_EVENT_STATUS_DASHBOARD.html
     └── PROJECT_PLAN.md
 ```
 
@@ -396,14 +412,16 @@ DetroitAutomationAcademy/
 
 Before the March 8 launch, ensure:
 
-- [ ] All documents reviewed by primary stakeholders
-- [ ] Critical dates entered in everyone's calendar
-- [ ] B&G Club event successfully executed (Feb 3-4)
-- [ ] 30+ applications received by Feb 28
-- [ ] Equipment delivered and tested (by Feb 15)
-- [ ] Instructor orientation completed (Feb 5)
-- [ ] Student orientation scheduled (Mar 5)
-- [ ] First cohort selected and notified (Mar 1)
+
+---
+## 🔒 PRIVACY & DEPLOYMENT NOTES
+
+- All public-facing files (e.g., docs/BGC_EVENT_STATUS_DASHBOARD.html) are privacy-audited before publication.
+- GitHub Pages is enabled for the repository (main branch, docs/ folder).
+- Author email privacy is enforced; see GitHub settings and commit history for compliance.
+- Stakeholders may submit feedback for documentation or privacy concerns to the Executive Admin Assistant.
+
+---
 
 ---
 
@@ -441,8 +459,8 @@ Before the March 8 launch, ensure:
 
 **Prepared by:** Automated Technologies Leadership Team  
 **Distribution:** All Stakeholders  
-**Last Updated:** February 1, 2025  
-**Version:** 1.0
+**Last Updated:** February 9, 2026  
+**Version:** 1.1
 
 **NEXT STEP:** Choose your role above and start reading your primary documents. Questions? Contact Justin Smith or refer to the appropriate document.
 
