@@ -183,8 +183,8 @@
 ├────────────────────────────────┼─────────────┼──────────────────────────────┤
 │ TOTAL YEAR 1                   │ $181,500    │                              │
 ├────────────────────────────────┼─────────────┼──────────────────────────────┤
-│ FUNDING SECURED                │ $210,000 ✅ │ Grants + tuition             │
-│ CONTINGENCY BUFFER             │ $28,500     │ 15% buffer                   │
+│ FUNDING SECURED                │ $100,000 ✅ │ Grants + tuition             │
+│ CONTINGENCY BUFFER             │ ($81,500)   │ Funding gap                  │
 └────────────────────────────────┴─────────────┴──────────────────────────────┘
 
 Funding Sources:
@@ -303,8 +303,8 @@ Funding Sources:
 │                                                                             │
 │  Risk Level: LOW (with proper funding and staffing)                        │
 │  Investment Required: $181,500 (Year 1)                                    │
-│  Funding Secured: $210,000 ✅                                              │
-│  Contingency Buffer: $28,500 (15%)                                         │
+│  Funding Secured: $100,000 ✅                                              │
+│  Funding Gap: $81,500                                                      │
 │                                                                             │
 │  Return on Investment: HIGH                                                │
 │  ├─ Workforce development for Detroit                                      │

@@ -81,7 +81,7 @@
 | **9+** | Raspberry Pi Kits | $12,600 one-time | Unlimited |
 
 **Total Year 1 Cost:** $181,500 (infrastructure + staffing)  
-**Funding Secured:** $210,000 ✅
+**Funding Secured:** $100,000 ✅
 
 ---
 
