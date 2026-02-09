@@ -1,61 +1,511 @@
-<script>
-// Redirect www subdomain to landing page
-if (window.location.hostname === 'www.detroitautomationacademy.com' || window.location.hostname.startsWith('www.')) {
-    window.location.replace('https://detroitautomationacademy.com/landing.html');
-}
-</script>
-
-<!-- 🚀 Detroit Automation Academy Event Dashboard @ BGC -->
-<div class="dashboard-container" style="display: flex; flex-wrap: wrap; gap: 24px; background: #f7f7fa; padding: 32px; font-family: 'Inter', Arial, sans-serif;">
-	<!-- Event Status Tile -->
-	<div class="tile event-status" style="flex: 1 1 320px; min-width: 320px; background: #0066CC; color: #fff; border-radius: 16px; box-shadow: 0 2px 8px #0066CC33; padding: 24px;">
-		<h2 style="margin-top:0;">🚀 Live Student Signups</h2>
-		<h3>Detroit Automation Academy @ BGC<br><span style="font-size:1em; font-weight:500; color:#fff;">In partnership with Boys and Girls Club of Greater Detroit & Michigan Central</span></h3>
-		<div style="font-size: 1.1em; margin-bottom: 12px;">Recent Enrollments</div>
-		<div id="enrollment-list" style="background: #fff2; border-radius: 8px; padding: 12px; min-height: 48px; color: #fff;">
-			<ul style="list-style:none; padding-left:0;">
-				<li><span style="font-weight:600;">Participant #1</span> - Registered</li>
-				<li><span style="font-weight:600;">Participant #2</span> - Registered</li>
-				<li><span style="font-weight:600;">Participant #3</span> - Registered</li>
-				<li><span style="font-weight:600;">Participant #4</span> - Registered</li>
-				<li><span style="font-weight:600;">Participant #5</span> - Registered</li>
-			</ul>
-			<div style="font-size:0.95em; color:#fff; margin-top:8px;">5 anonymized signups acknowledged. Students will see their submissions appear here in real-time!</div>
-		</div>
-	</div>
-
-	<!-- Daily News Tile -->
-	<div class="tile news-tile" style="flex: 1 1 320px; min-width: 320px; background: #CC5522; color: #fff; border-radius: 16px; box-shadow: 0 2px 8px #CC552233; padding: 24px;">
-		<h2 style="margin-top:0;">📰 Daily News & Updates</h2>
-		<div id="news-list" style="background: #fff2; border-radius: 8px; padding: 12px; min-height: 48px; color: #fff;">
-			<ul style="list-style:none; padding-left:0;">
-				<li><strong>New Partnership:</strong> Detroit Automation Academy joins Boys and Girls Club of Greater Detroit and Michigan Central.</li>
-				<li><strong>Event Success:</strong> February 4th event completed with 5 new signups.</li>
-				<li><strong>Dashboard Update:</strong> Enhanced tile-based layout and modern branding now live.</li>
-			</ul>
-			<div style="font-size:0.95em; color:#fff; margin-top:8px;">Check back for event highlights, announcements, and student stories!</div>
-		</div>
-	</div>
-
-	<!-- Agent Highlight Tile -->
-	<div class="tile agent-tile" style="flex: 1 1 320px; min-width: 320px; background: #66CC00; color: #222; border-radius: 16px; box-shadow: 0 2px 8px #66CC0033; padding: 24px;">
-		<h2 style="margin-top:0;">🤖 Project Agents</h2>
-		<ul style="list-style:none; padding-left:0; margin-bottom:0;">
-			<li><strong>AI Copilot</strong> <span style="color:#0066CC;">🟢 Active</span> <span style="font-size:0.95em;">(Dashboard Privacy Audit)</span></li>
-			<li><strong>Admin Coordinator</strong> <span style="color:#CC5522;">🔄 In-progress</span> <span style="font-size:0.95em;">(Event Enrollment Sync)</span></li>
-			<li><strong>Brand Lead</strong> <span style="color:#66CC00;">⭐ Recommended</span> <span style="font-size:0.95em;">(Branding & Design)</span></li>
-			<li><strong>Technical Lead</strong> <span style="color:#333;">🟠 Standby</span> <span style="font-size:0.95em;">(Infrastructure)</span></li>
-		</ul>
-		<div style="font-size:0.95em; color:#222; margin-top:8px;">All agents operate with privacy-first principles.</div>
-	</div>
-
-	<!-- Admin Tile (authentication required) -->
-	<div class="tile admin-tile" style="flex: 1 1 320px; min-width: 320px; background: #333; color: #fff; border-radius: 16px; box-shadow: 0 2px 8px #33333333; padding: 24px;">
-		<h2 style="margin-top:0;">🔒 Admin Portal</h2>
-		<div style="font-size:1.1em;">Staff metrics, partnership management, and secure login required.</div>
-		<div style="font-size:0.95em; color:#fff; margin-top:8px;">Restricted access. Please authenticate to view admin features.</div>
-	</div>
-</div>
-
-<!-- All tiles and news elements reviewed for privacy compliance before publishing. -->
-<!-- Reference: ADMINISTRATIVE_COORDINATION_PLAN.md for privacy workflow and escalation procedures. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detroit Automation Academy - Automation Skills for Detroit's Future</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            line-height: 1.6;
+            color: #222;
+            background: #f7f7fa;
+        }
+        
+        header {
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 24px;
+            color: #0066CC;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #222;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #0066CC;
+        }
+        
+        .cta-button {
+            background: #0066CC;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s;
+            display: inline-block;
+        }
+        
+        .cta-button:hover {
+            background: #0052A3;
+        }
+        
+        .cta-button-secondary {
+            background: #CC5522;
+        }
+        
+        .cta-button-secondary:hover {
+            background: #A83F1A;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #0066CC 0%, #004A99 100%);
+            color: white;
+            padding: 80px 32px;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 32px;
+            opacity: 0.95;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .hero .cta-button {
+            background: #66CC00;
+            color: #222;
+        }
+        
+        .hero .cta-button:hover {
+            background: #52A300;
+        }
+        
+        .event-success {
+            background: #fff;
+            padding: 48px 32px;
+            margin: 48px 0;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        
+        .event-success-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+        
+        .event-success h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #0066CC;
+        }
+        
+        .event-success p {
+            font-size: 16px;
+            margin-bottom: 12px;
+            line-height: 1.8;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 24px;
+        }
+        
+        .stat {
+            background: #f7f7fa;
+            padding: 16px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-family: 'Poppins', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: #CC5522;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            color: #666;
+            margin-top: 4px;
+        }
+        
+        .programs {
+            max-width: 1200px;
+            margin: 48px auto;
+            padding: 0 32px;
+        }
+        
+        .programs h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 36px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 48px;
+            color: #222;
+        }
+        
+        .program-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-bottom: 48px;
+        }
+        
+        .program-card {
+            background: white;
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .program-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+        
+        .program-card h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #0066CC;
+        }
+        
+        .program-card p {
+            font-size: 14px;
+            line-height: 1.8;
+            margin-bottom: 16px;
+            color: #666;
+        }
+        
+        .phase-badge {
+            display: inline-block;
+            background: #f7f7fa;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #0066CC;
+            margin-bottom: 12px;
+        }
+        
+        .roles {
+            max-width: 1200px;
+            margin: 64px auto;
+            padding: 0 32px;
+        }
+        
+        .roles h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 36px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 48px;
+            color: #222;
+        }
+        
+        .role-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+        
+        .role-card {
+            background: white;
+            padding: 40px 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .role-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+            border-top: 4px solid #0066CC;
+        }
+        
+        .role-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+        
+        .role-card h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #222;
+        }
+        
+        .role-card p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 24px;
+        }
+        
+        .role-card a {
+            display: inline-block;
+            background: #0066CC;
+            color: white;
+            padding: 10px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        
+        .role-card a:hover {
+            background: #0052A3;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #CC5522 0%, #A83F1A 100%);
+            color: white;
+            padding: 64px 32px;
+            text-align: center;
+            margin: 64px 0;
+        }
+        
+        .cta-section h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        
+        .cta-section p {
+            font-size: 16px;
+            margin-bottom: 32px;
+            opacity: 0.95;
+        }
+        
+        footer {
+            background: #222;
+            color: white;
+            padding: 32px;
+            text-align: center;
+            font-size: 14px;
+        }
+        
+        .footer-links {
+            margin-bottom: 16px;
+        }
+        
+        .footer-links a {
+            color: #66CC00;
+            text-decoration: none;
+            margin: 0 16px;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #52A300;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .event-success-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .program-grid,
+            .role-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .programs h2,
+            .roles h2,
+            .cta-section h2 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo"><a href="index.html" style="text-decoration: none; color: #0066CC;">🚀 DAA</a></div>
+            <ul class="nav-links">
+                <li><a href="index.html">📊 Dashboard</a></li>
+                <li><a href="landing.html">🎓 Program</a></li>
+                <li><a href="students.html">👨‍🎓 Students</a></li>
+                <li><a href="instructors.html">👨‍🏫 Instructors</a></li>
+                <li><a href="partners.html">💼 Partners</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Automation Skills for Detroit's Future</h1>
+            <p>Learn robotics, CAD design, and autonomous systems. Built by Detroit, for Detroit.</p>
+            <div class="hero-buttons">
+                <a href="students.html" class="cta-button">Apply Now</a>
+                <a href="#programs" class="cta-button cta-button-secondary">Learn More</a>
+            </div>
+        </div>
+    </section>
+    
+    <section class="event-success">
+        <div class="event-success-content">
+            <div>
+                <h2>🎉 Launch Event Success</h2>
+                <p>Our inaugural event at the Boys & Girls Club of Greater Detroit was a tremendous success! We excited and inspired the next generation of Detroit engineers.</p>
+                <p><strong>What happened:</strong></p>
+                <ul style="text-align: left; display: inline-block; margin-top: 12px;">
+                    <li>✅ 50+ attendees from local schools and community</li>
+                    <li>✅ 5+ immediate sign-ups for our program</li>
+                    <li>✅ Partnership formalized with Michigan Central</li>
+                    <li>✅ Equipment demonstrations showcasing all 3 phases</li>
+                    <li>✅ Student testimonials and parent enthusiasm</li>
+                </ul>
+            </div>
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Attendees</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Phases Demonstrated</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">5+</div>
+                    <div class="stat-label">Direct Signups</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Parent Approval</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="programs" id="programs">
+        <h2>Three Progressive Phases</h2>
+        <div class="program-grid">
+            <div class="program-card">
+                <span class="phase-badge">PHASE 1: GPIO & HARDWARE</span>
+                <h3>🔌 Electronics Control</h3>
+                <p>Learn Raspberry Pi GPIO programming, control LEDs and buttons, understand hardware fundamentals, and build event-driven applications.</p>
+                <p><strong>Skills:</strong> Python, GPIO, Electronics, Hardware Abstraction</p>
+            </div>
+            <div class="program-card">
+                <span class="phase-badge">PHASE 2: CAD & FABRICATION</span>
+                <h3>🏗️ 3D Design & Laser Cutting</h3>
+                <p>Design parametric 3D models, generate STL files for 3D printing, create G-code for laser cutting, and fabricate real parts.</p>
+                <p><strong>Skills:</strong> CAD, Parametric Design, G-code, Fabrication</p>
+            </div>
+            <div class="program-card">
+                <span class="phase-badge">PHASE 3: AUTONOMOUS SYSTEMS</span>
+                <h3>🤖 Rover Navigation & Autonomy</h3>
+                <p>Program autonomous rover behavior, implement navigation algorithms, test in simulated environments, and deploy on real hardware.</p>
+                <p><strong>Skills:</strong> Algorithms, Navigation, Autonomous Systems, Debugging</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="roles" id="roles">
+        <h2>Choose Your Path</h2>
+        <div class="role-grid">
+            <div class="role-card">
+                <div class="role-icon">👨‍🎓</div>
+                <h3>Students</h3>
+                <p>Ready to learn automation? Apply to our 12-week program and gain hands-on skills in robotics and autonomous systems.</p>
+                <a href="students.html">Apply Today</a>
+            </div>
+            <div class="role-card">
+                <div class="role-icon">👩‍🏫</div>
+                <h3>Instructors</h3>
+                <p>Want to teach? Access our complete curriculum, teaching guides, and resources to deliver world-class automation education.</p>
+                <a href="instructors.html">Explore Curriculum</a>
+            </div>
+            <div class="role-card">
+                <div class="role-icon">🤝</div>
+                <h3>Partners & Donors</h3>
+                <p>Support Detroit's future. Partner with us to scale automation education to 500+ students annually.</p>
+                <a href="partners.html">Get Involved</a>
+            </div>
+        </div>
+    </section>
+    
+    <section class="cta-section">
+        <h2>Ready to Join Detroit Automation Academy?</h2>
+        <p>The next cohort is accepting applications now. Limited seats available.</p>
+        <a href="students.html" class="cta-button" style="background: #66CC00; color: #222;">Start Your Application</a>
+    </section>
+    
+    <footer>
+        <div class="footer-links">
+            <a href="https://github.com/smit4786/DetroitAutomationAcademy" target="_blank">GitHub</a>
+            <a href="quick_start.md">Quick Start</a>
+            <a href="index.html" target="_blank">Live Dashboard</a>
+            <a href="mailto:dbkrsmith+daa@gmail.com">Contact</a>
+        </div>
+        <p>&copy; 2026 Detroit Automation Academy. All rights reserved. | Automation skills for Detroit's future, built by Detroiters.</p>
+    </footer>
+</body>
+</html>
