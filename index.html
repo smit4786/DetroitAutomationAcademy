@@ -1,3 +1,9 @@
+<script>
+// Redirect www subdomain to landing page
+if (window.location.hostname === 'www.detroitautomationacademy.com' || window.location.hostname.startsWith('www.')) {
+    window.location.replace('https://detroitautomationacademy.com/landing.html');
+}
+</script>
 
 <!-- 🚀 Detroit Automation Academy Event Dashboard @ BGC -->
 <div class="dashboard-container" style="display: flex; flex-wrap: wrap; gap: 24px; background: #f7f7fa; padding: 32px; font-family: 'Inter', Arial, sans-serif;">
