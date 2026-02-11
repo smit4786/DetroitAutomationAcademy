@@ -2,6 +2,8 @@
 
 Welcome to the Detroit Automation Academy documentation. This index maps all guides to curriculum phases and use cases.
 
+**For a complete inventory of all documents and their purposes, see [MASTER_DOCUMENT_INDEX.md](../MASTER_DOCUMENT_INDEX.md).**
+
 ## 🌐 NEW: Program Landing Pages
 
 Our website now features comprehensive role-based landing pages. Start here based on your interest:

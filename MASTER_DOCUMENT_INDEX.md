@@ -368,6 +368,8 @@
 
 All documents are stored in the root of the DetroitAutomationAcademy repository:
 
+**For curriculum guides, quick start, and API reference, see [docs/INDEX.md](docs/INDEX.md).**
+
 ```
 DetroitAutomationAcademy/
 ├── EVALUATION_SUMMARY.md                          (⭐ Start here)
@@ -408,6 +410,20 @@ DetroitAutomationAcademy/
 
 ---
 ## 🌟 Website & UI Update (Feb 2026)
+---
+## ✅ Branding Checklist (Quick Reference)
+Before updating any public-facing page or asset, verify:
+- [ ] Gear logo SVG is present and visible
+- [ ] DAA text uses Poppins font, correct color
+- [ ] Navigation bar is standardized (links, layout, color)
+- [ ] Dark mode toggle is functional
+- [ ] palette.css is included and semantic colors are used
+- [ ] ARIA attributes and alt text for accessibility
+- [ ] All role-based pages link to each other and landing.html
+- [ ] Footer links: Home, GitHub, Quick Start, Contact
+- [ ] File/folder naming follows conventions in site_structure.md
+- [ ] Documentation cross-references are up-to-date
+---
 All main public-facing pages (landing.html, students.html, instructors.html, partners.html, dashboard.html, docs/index.html) now feature:
 - Standardized navigation bar (template-driven)
 - Gear logo branding and DAA text
