@@ -407,6 +407,16 @@ DetroitAutomationAcademy/
 ```
 
 ---
+## 🌟 Website & UI Update (Feb 2026)
+All main public-facing pages (landing.html, students.html, instructors.html, partners.html, dashboard.html, docs/index.html) now feature:
+- Standardized navigation bar (template-driven)
+- Gear logo branding and DAA text
+- Navigation links for all roles
+- Dark mode toggle for accessibility
+- Semantic palette.css for color themes
+This update improves visual consistency, accessibility, and branding across the site.
+
+---
 
 ## ✅ FINAL CHECKLIST
 

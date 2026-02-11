@@ -15,7 +15,8 @@ Our website now features comprehensive role-based landing pages. Start here base
 
 **All pages are responsive and mobile-friendly.** Links to these guides, curriculum, and GitHub are integrated throughout.
 
----
+**UI Update (Feb 2026):** All main pages now feature a standardized navigation bar with gear logo branding, DAA text, navigation links, and a dark mode toggle. The semantic palette.css ensures accessible color themes for all users.
+
 
 ## Quick Navigation
 
